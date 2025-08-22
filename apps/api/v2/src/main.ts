@@ -9,7 +9,6 @@ import {
   PathItemObject,
   PathsObject,
   OperationObject,
-  TagObject,
 } from "@nestjs/swagger/dist/interfaces/open-api-spec.interface";
 import "dotenv/config";
 import * as fs from "fs";
@@ -27,6 +26,15 @@ const run = async () => {
     logger: WinstonModule.createLogger(loggerConfig()),
     bodyParser: false,
   });
+
+  // Add validation pipe
+  app.useGlobalPipes(
+    new (await import("@nestjs/common")).ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+    })
+  );
 
   const logger = new Logger("App");
 
@@ -128,7 +136,8 @@ async function generateSwagger(app: NestExpressApplication<Server>) {
       customCss: ".swagger-ui .topbar { display: none }",
     });
 
-    logger.log(`Swagger documentation available in the "/docs" endpoint\n`);
+    logger.log(`Swagger documentation available in the "/docs" endpoint
+`);
   }
 }
 
