@@ -21149,7 +21149,9 @@
             "description": "Trigger type for the workflow"
           }
         },
-        "required": ["type"]
+        "required": [
+          "type"
+        ]
       },
       "OnRejectedTriggerDto": {
         "type": "object",
@@ -21160,7 +21162,9 @@
             "description": "Trigger type for the workflow"
           }
         },
-        "required": ["type"]
+        "required": [
+          "type"
+        ]
       },
       "OnRequestedTriggerDto": {
         "type": "object",
@@ -21171,7 +21175,9 @@
             "description": "Trigger type for the workflow"
           }
         },
-        "required": ["type"]
+        "required": [
+          "type"
+        ]
       },
       "OnPaymentInitiatedTriggerDto": {
         "type": "object",
@@ -21182,7 +21188,9 @@
             "description": "Trigger type for the workflow"
           }
         },
-        "required": ["type"]
+        "required": [
+          "type"
+        ]
       },
       "OnPaidTriggerDto": {
         "type": "object",
@@ -21193,7 +21201,9 @@
             "description": "Trigger type for the workflow"
           }
         },
-        "required": ["type"]
+        "required": [
+          "type"
+        ]
       },
       "OnAfterCalVideoGuestsNoShowTriggerDto": {
         "type": "object",
