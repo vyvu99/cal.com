@@ -1,12 +1,13 @@
+import { sha256Hash, stripApiKey } from "@/lib/api-key";
 import { JwtService } from "@/modules/jwt/jwt.service";
 import { PrismaReadService } from "@/modules/prisma/prisma-read.service";
 import { PrismaWriteService } from "@/modules/prisma/prisma-write.service";
 import { Injectable } from "@nestjs/common";
 import { Logger } from "@nestjs/common";
+import { ConfigService } from "@nestjs/config";
+import { PlatformAuthorizationToken } from "@calcom/prisma/client";
 import { DateTime } from "luxon";
 import { v4 as uuidv4 } from "uuid";
-
-import type { PlatformAuthorizationToken } from "@calcom/prisma/client";
 
 @Injectable()
 export class TokensRepository {
@@ -15,7 +16,8 @@ export class TokensRepository {
   constructor(
     private readonly dbRead: PrismaReadService,
     private readonly dbWrite: PrismaWriteService,
-    private readonly jwtService: JwtService
+    private readonly jwtService: JwtService,
+    private readonly config: ConfigService
   ) {}
 
   async createAuthorizationToken(clientId: string, userId: number): Promise<PlatformAuthorizationToken> {
@@ -166,6 +168,21 @@ export class TokensRepository {
     });
 
     return accessToken?.userId;
+  }
+
+  async getApiKeyOwnerId(apiKey: string) {
+    const strippedApiKey = stripApiKey(apiKey, this.config.get<string>("api.keyPrefix"));
+    const apiKeyHash = sha256Hash(strippedApiKey);
+    const apiKeyData = await this.dbRead.prisma.apiKey.findUnique({
+      where: {
+        hashedKey: apiKeyHash,
+      },
+      select: {
+        userId: true,
+      },
+    });
+
+    return apiKeyData?.userId;
   }
 
   async refreshOAuthTokens(clientId: string, refreshTokenSecret: string, tokenUserId: number) {

@@ -128,7 +128,7 @@ class Organization {
 
   @IsOptional()
   @ApiPropertyOptional({ type: Object })
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 class Profile {

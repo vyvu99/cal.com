@@ -11,7 +11,7 @@ services:
       - REDIS_PORT=${REDIS_PORT:-6379}
 
   postgres:
-    image: postgres:13
+    image: postgres:latest
     container_name: postgres_container
     ports:
       - "${DATABASE_PORT:-5432}:5432"

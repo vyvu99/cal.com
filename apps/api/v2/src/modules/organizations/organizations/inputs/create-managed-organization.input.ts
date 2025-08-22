@@ -27,6 +27,5 @@ export class CreateOrganizationInput extends RefreshApiKeyInput {
   })
   @IsObject()
   @IsOptional()
-  @ValidateMetadata()
   metadata?: Metadata;
 }

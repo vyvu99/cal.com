@@ -1,6 +1,7 @@
 import { CalendarsRepository } from "@/ee/calendars/calendars.repository";
 import { CalendarsCacheService } from "@/ee/calendars/services/calendars-cache.service";
 import { CalendarsService } from "@/ee/calendars/services/calendars.service";
+import { GoogleCalendarService } from "@/ee/calendars/services/gcal.service";
 import { GcalController } from "@/ee/gcal/gcal.controller";
 import { AppsRepository } from "@/modules/apps/apps.repository";
 import { GCalService } from "@/modules/apps/services/gcal.service";
@@ -22,6 +23,7 @@ import { ConfigService } from "@nestjs/config";
     CredentialsRepository,
     SelectedCalendarsRepository,
     GCalService,
+    GoogleCalendarService,
     CalendarsService,
     CalendarsCacheService,
     UsersRepository,

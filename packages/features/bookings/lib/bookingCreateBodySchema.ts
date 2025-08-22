@@ -17,7 +17,7 @@ export const bookingCreateBodySchema = z.object({
   user: z.union([z.string(), z.array(z.string())]).optional(),
   language: z.string(),
   bookingUid: z.string().optional(),
-  metadata: z.record(z.string()),
+  metadata: z.record(z.union([z.string(), z.number(), z.boolean()])).optional(),
   hasHashedBookingLink: z.boolean().optional(),
   hashedLink: z.string().nullish(),
   seatReferenceUid: z.string().optional(),

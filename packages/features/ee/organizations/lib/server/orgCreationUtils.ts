@@ -52,6 +52,7 @@ function isNotACompanyEmail(email: string) {
     "lycos.com",
     "outlook.co",
     "hotmail.co.uk",
+    "taro.edu.vn",
   ];
 
   const emailParts = email.split("@");

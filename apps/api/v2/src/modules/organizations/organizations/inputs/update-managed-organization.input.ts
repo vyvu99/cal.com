@@ -17,6 +17,5 @@ export class UpdateOrganizationInput {
   })
   @IsObject()
   @IsOptional()
-  @ValidateMetadata()
   metadata?: Metadata;
 }

@@ -1,8 +1,14 @@
+import { GetUser } from "@/modules/auth/decorators/get-user/get-user.decorator";
+import { ApiAuthGuard } from "@/modules/auth/guards/api-auth/api-auth.guard";
+import { ApiAuthGuardUser } from "@/modules/auth/strategies/api-auth/api-auth.strategy";
 import { UserCreateInput } from "@/modules/users/inputs/user-create.input";
+import { GenerateApiKeyResponse } from "@/modules/users/outputs/generate-api-key";
 import { UserSignupResponse, UserSignupErrorResponse } from "@/modules/users/outputs/user-signup.output";
 import { UsersService } from "@/modules/users/services/users.service";
-import { Body, Controller, Post, HttpCode, HttpStatus } from "@nestjs/common";
-import { ApiTags as DocsTags, ApiOperation, ApiResponse } from "@nestjs/swagger";
+import { Body, Controller, Post, HttpCode, HttpStatus, Logger, UseGuards } from "@nestjs/common";
+import { ApiTags as DocsTags, ApiOperation, ApiResponse, ApiHeader } from "@nestjs/swagger";
+
+import { SUCCESS_STATUS, ERROR_STATUS } from "@calcom/platform-constants";
 
 @Controller("users")
 @DocsTags("Users")
@@ -62,10 +68,55 @@ export class UsersController {
         };
       }
 
+      Logger.error(error);
+
       // Handle other errors
       return {
         status: HttpStatus.INTERNAL_SERVER_ERROR,
         message: "An error occurred while creating the user account",
+      };
+    }
+  }
+
+  @UseGuards(ApiAuthGuard)
+  @Post("generate-api-key")
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: "Generate a new API key for the authenticated user" })
+  @ApiHeader({
+    name: "Authorization",
+    description: "API key authentication in the format 'Bearer <api_key>'",
+    required: true,
+  })
+  @ApiResponse({
+    status: 200,
+    description: "API key generated successfully",
+    type: GenerateApiKeyResponse,
+  })
+  @ApiResponse({
+    status: 401,
+    description: "Unauthorized - Invalid or missing API key",
+  })
+  async generateApiKey(@GetUser() user: ApiAuthGuardUser): Promise<GenerateApiKeyResponse> {
+    try {
+      // Generate a new API key for the user
+      const apiKey = await this.usersService.generateApiKeyForUser(user.id);
+
+      return {
+        status: SUCCESS_STATUS,
+        data: {
+          apiKey: apiKey,
+        },
+      };
+    } catch (error: any) {
+      Logger.error(error);
+
+      // Handle errors
+      return {
+        status: ERROR_STATUS,
+        message: "An error occurred while generating the API key",
+        data: {
+          apiKey: "",
+        },
       };
     }
   }

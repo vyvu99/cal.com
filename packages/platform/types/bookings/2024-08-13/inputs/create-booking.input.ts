@@ -346,7 +346,7 @@ export class CreateBookingInput_2024_08_13 {
     message:
       "Metadata must have at most 50 keys, each key up to 40 characters, and string values up to 500 characters.",
   })
-  metadata?: Record<string, string>;
+  metadata?: Record<string, unknown>;
 
   @IsOptional()
   @IsInt()

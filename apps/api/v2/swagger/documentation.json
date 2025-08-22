@@ -28,8 +28,8 @@
             "required": false,
             "in": "query",
             "description": "The number of items to return",
+            "example": 10,
             "schema": {
-              "example": 10,
               "type": "number"
             }
           },
@@ -38,8 +38,8 @@
             "required": false,
             "in": "query",
             "description": "The number of items to skip",
+            "example": 0,
             "schema": {
-              "example": 0,
               "type": "number"
             }
           },
@@ -48,8 +48,8 @@
             "required": false,
             "in": "query",
             "description": "Filter managed users by email. If you want to filter by multiple emails, separate them with a comma.",
+            "example": "?emails=email1@example.com,email2@example.com",
             "schema": {
-              "example": "?emails=email1@example.com,email2@example.com",
               "type": "array",
               "items": {
                 "type": "string"
@@ -447,11 +447,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -460,10 +460,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           }
@@ -660,11 +660,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -673,10 +673,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           }
@@ -1173,8 +1173,8 @@
             "required": false,
             "in": "query",
             "description": "Filter by assigned attribute option ids. ids must be separated by a comma.",
+            "example": "?assignedOptionIds=aaaaaaaa-bbbb-cccc-dddd-eeeeee1eee,aaaaaaaa-bbbb-cccc-dddd-eeeeee2eee",
             "schema": {
-              "example": "?assignedOptionIds=aaaaaaaa-bbbb-cccc-dddd-eeeeee1eee,aaaaaaaa-bbbb-cccc-dddd-eeeeee2eee",
               "type": "array",
               "items": {
                 "type": "string"
@@ -1186,8 +1186,8 @@
             "required": false,
             "in": "query",
             "description": "Filter by teamIds. Team ids must be separated by a comma.",
+            "example": "?teamIds=100,200",
             "schema": {
-              "example": "?teamIds=100,200",
               "type": "array",
               "items": {
                 "type": "number"
@@ -1265,8 +1265,8 @@
             "required": false,
             "in": "query",
             "description": "Filter by assigned attribute option ids. ids must be separated by a comma.",
+            "example": "?assignedOptionIds=aaaaaaaa-bbbb-cccc-dddd-eeeeee1eee,aaaaaaaa-bbbb-cccc-dddd-eeeeee2eee",
             "schema": {
-              "example": "?assignedOptionIds=aaaaaaaa-bbbb-cccc-dddd-eeeeee1eee,aaaaaaaa-bbbb-cccc-dddd-eeeeee2eee",
               "type": "array",
               "items": {
                 "type": "string"
@@ -1278,8 +1278,8 @@
             "required": false,
             "in": "query",
             "description": "Filter by teamIds. Team ids must be separated by a comma.",
+            "example": "?teamIds=100,200",
             "schema": {
-              "example": "?teamIds=100,200",
               "type": "array",
               "items": {
                 "type": "number"
@@ -1501,8 +1501,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by status. If you want to filter by multiple statuses, separate them with a comma.",
+            "example": "?status=upcoming,past",
             "schema": {
-              "example": "?status=upcoming,past",
               "type": "array",
               "items": {
                 "type": "string",
@@ -1521,8 +1521,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by the attendee's email address.",
+            "example": "example@domain.com",
             "schema": {
-              "example": "example@domain.com",
               "type": "string"
             }
           },
@@ -1531,8 +1531,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by the attendee's name.",
+            "example": "John Doe",
             "schema": {
-              "example": "John Doe",
               "type": "string"
             }
           },
@@ -1541,8 +1541,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by the booking Uid.",
+            "example": "2NtaeaVcKfpmSZ4CthFdfk",
             "schema": {
-              "example": "2NtaeaVcKfpmSZ4CthFdfk",
               "type": "string"
             }
           },
@@ -1551,8 +1551,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by event type ids belonging to the user. Event type ids must be separated by a comma.",
+            "example": "?eventTypeIds=100,200",
             "schema": {
-              "example": "?eventTypeIds=100,200",
               "type": "string"
             }
           },
@@ -1561,8 +1561,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by event type id belonging to the user.",
+            "example": "?eventTypeId=100",
             "schema": {
-              "example": "?eventTypeId=100",
               "type": "string"
             }
           },
@@ -1571,8 +1571,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by team ids that user is part of. Team ids must be separated by a comma.",
+            "example": "?teamIds=50,60",
             "schema": {
-              "example": "?teamIds=50,60",
               "type": "string"
             }
           },
@@ -1581,8 +1581,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by team id that user is part of",
+            "example": "?teamId=50",
             "schema": {
-              "example": "?teamId=50",
               "type": "string"
             }
           },
@@ -1591,8 +1591,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings with start after this date string.",
+            "example": "?afterStart=2025-03-07T10:00:00.000Z",
             "schema": {
-              "example": "?afterStart=2025-03-07T10:00:00.000Z",
               "type": "string"
             }
           },
@@ -1601,8 +1601,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings with end before this date string.",
+            "example": "?beforeEnd=2025-03-07T11:00:00.000Z",
             "schema": {
-              "example": "?beforeEnd=2025-03-07T11:00:00.000Z",
               "type": "string"
             }
           },
@@ -1611,8 +1611,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings that have been created after this date string.",
+            "example": "?afterCreatedAt=2025-03-07T10:00:00.000Z",
             "schema": {
-              "example": "?afterCreatedAt=2025-03-07T10:00:00.000Z",
               "type": "string"
             }
           },
@@ -1621,8 +1621,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings that have been created before this date string.",
+            "example": "?beforeCreatedAt=2025-03-14T11:00:00.000Z",
             "schema": {
-              "example": "?beforeCreatedAt=2025-03-14T11:00:00.000Z",
               "type": "string"
             }
           },
@@ -1631,8 +1631,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings that have been updated after this date string.",
+            "example": "?afterUpdatedAt=2025-03-07T10:00:00.000Z",
             "schema": {
-              "example": "?afterUpdatedAt=2025-03-07T10:00:00.000Z",
               "type": "string"
             }
           },
@@ -1641,8 +1641,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings that have been updated before this date string.",
+            "example": "?beforeUpdatedAt=2025-03-14T11:00:00.000Z",
             "schema": {
-              "example": "?beforeUpdatedAt=2025-03-14T11:00:00.000Z",
               "type": "string"
             }
           },
@@ -1651,8 +1651,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their start time in ascending or descending order.",
+            "example": "?sortStart=asc OR ?sortStart=desc",
             "schema": {
-              "example": "?sortStart=asc OR ?sortStart=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -1665,8 +1665,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their end time in ascending or descending order.",
+            "example": "?sortEnd=asc OR ?sortEnd=desc",
             "schema": {
-              "example": "?sortEnd=asc OR ?sortEnd=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -1679,8 +1679,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their creation time (when booking was made) in ascending or descending order.",
+            "example": "?sortCreated=asc OR ?sortCreated=desc",
             "schema": {
-              "example": "?sortCreated=asc OR ?sortCreated=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -1693,8 +1693,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their updated time (for example when booking status changes) in ascending or descending order.",
+            "example": "?sortUpdated=asc OR ?sortUpdated=desc",
             "schema": {
-              "example": "?sortUpdated=asc OR ?sortUpdated=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -1707,9 +1707,9 @@
             "required": false,
             "in": "query",
             "description": "The number of items to return",
+            "example": 10,
             "schema": {
               "default": 100,
-              "example": 10,
               "type": "number"
             }
           },
@@ -1718,9 +1718,9 @@
             "required": false,
             "in": "query",
             "description": "The number of items to skip",
+            "example": 0,
             "schema": {
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           },
@@ -1729,8 +1729,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by ids of users within your organization.",
+            "example": "?userIds=100,200",
             "schema": {
-              "example": "?userIds=100,200",
               "type": "string"
             }
           },
@@ -1750,6 +1750,302 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/GetBookingsOutput_2024_08_13"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Orgs / Bookings"
+        ]
+      }
+    },
+    "/v2/organizations/{orgId}/bookings/count": {
+      "get": {
+        "operationId": "OrganizationsBookingsController_countOrgBookings",
+        "summary": "Count organization bookings",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "value must be `Bearer <token>` where `<token>` is api key prefixed with cal_ or managed user access token",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-cal-secret-key",
+            "in": "header",
+            "description": "For platform customers - OAuth client secret key",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-cal-client-id",
+            "in": "header",
+            "description": "For platform customers - OAuth client ID",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "description": "Filter bookings by status. If you want to filter by multiple statuses, separate them with a comma.",
+            "example": "?status=upcoming,past",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "upcoming",
+                  "recurring",
+                  "past",
+                  "cancelled",
+                  "unconfirmed"
+                ]
+              }
+            }
+          },
+          {
+            "name": "attendeeEmail",
+            "required": false,
+            "in": "query",
+            "description": "Filter bookings by the attendee's email address.",
+            "example": "example@domain.com",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "attendeeName",
+            "required": false,
+            "in": "query",
+            "description": "Filter bookings by the attendee's name.",
+            "example": "John Doe",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "bookingUid",
+            "required": false,
+            "in": "query",
+            "description": "Filter bookings by the booking Uid.",
+            "example": "2NtaeaVcKfpmSZ4CthFdfk",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "eventTypeIds",
+            "required": false,
+            "in": "query",
+            "description": "Filter bookings by event type ids belonging to the user. Event type ids must be separated by a comma.",
+            "example": "?eventTypeIds=100,200",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "eventTypeId",
+            "required": false,
+            "in": "query",
+            "description": "Filter bookings by event type id belonging to the user.",
+            "example": "?eventTypeId=100",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "teamsIds",
+            "required": false,
+            "in": "query",
+            "description": "Filter bookings by team ids that user is part of. Team ids must be separated by a comma.",
+            "example": "?teamIds=50,60",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "teamId",
+            "required": false,
+            "in": "query",
+            "description": "Filter bookings by team id that user is part of",
+            "example": "?teamId=50",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "afterStart",
+            "required": false,
+            "in": "query",
+            "description": "Filter bookings with start after this date string.",
+            "example": "?afterStart=2025-03-07T10:00:00.000Z",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "beforeEnd",
+            "required": false,
+            "in": "query",
+            "description": "Filter bookings with end before this date string.",
+            "example": "?beforeEnd=2025-03-07T11:00:00.000Z",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "afterCreatedAt",
+            "required": false,
+            "in": "query",
+            "description": "Filter bookings that have been created after this date string.",
+            "example": "?afterCreatedAt=2025-03-07T10:00:00.000Z",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "beforeCreatedAt",
+            "required": false,
+            "in": "query",
+            "description": "Filter bookings that have been created before this date string.",
+            "example": "?beforeCreatedAt=2025-03-14T11:00:00.000Z",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "afterUpdatedAt",
+            "required": false,
+            "in": "query",
+            "description": "Filter bookings that have been updated after this date string.",
+            "example": "?afterUpdatedAt=2025-03-07T10:00:00.000Z",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "beforeUpdatedAt",
+            "required": false,
+            "in": "query",
+            "description": "Filter bookings that have been updated before this date string.",
+            "example": "?beforeUpdatedAt=2025-03-14T11:00:00.000Z",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortStart",
+            "required": false,
+            "in": "query",
+            "description": "Sort results by their start time in ascending or descending order.",
+            "example": "?sortStart=asc OR ?sortStart=desc",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortEnd",
+            "required": false,
+            "in": "query",
+            "description": "Sort results by their end time in ascending or descending order.",
+            "example": "?sortEnd=asc OR ?sortEnd=desc",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortCreated",
+            "required": false,
+            "in": "query",
+            "description": "Sort results by their creation time (when booking was made) in ascending or descending order.",
+            "example": "?sortCreated=asc OR ?sortCreated=desc",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortUpdatedAt",
+            "required": false,
+            "in": "query",
+            "description": "Sort results by their updated time (for example when booking status changes) in ascending or descending order.",
+            "example": "?sortUpdated=asc OR ?sortUpdated=desc",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "take",
+            "required": false,
+            "in": "query",
+            "description": "The number of items to return",
+            "example": 10,
+            "schema": {
+              "default": 100,
+              "type": "number"
+            }
+          },
+          {
+            "name": "skip",
+            "required": false,
+            "in": "query",
+            "description": "The number of items to skip",
+            "example": 0,
+            "schema": {
+              "default": 0,
+              "type": "number"
+            }
+          },
+          {
+            "name": "userIds",
+            "required": false,
+            "in": "query",
+            "description": "Filter bookings by ids of users within your organization.",
+            "example": "?userIds=100,200",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "orgId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountBookingsOutput"
                 }
               }
             }
@@ -1949,11 +2245,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -1962,10 +2258,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           }
@@ -2377,8 +2673,8 @@
             "required": false,
             "in": "query",
             "description": "Filter by teamIds. Team ids must be separated by a comma.",
+            "example": "?teamIds=100,200",
             "schema": {
-              "example": "?teamIds=100,200",
               "type": "array",
               "items": {
                 "type": "number"
@@ -2577,8 +2873,8 @@
             "required": true,
             "in": "query",
             "description": "\n      Time starting from which available slots should be checked.\n    \n      Must be in UTC timezone as ISO 8601 datestring.\n      \n      You can pass date without hours which defaults to start of day or specify hours:\n      2024-08-13 (will have hours 00:00:00 aka at very beginning of the date) or you can specify hours manually like 2024-08-13T09:00:00Z\n      ",
+            "example": "2050-09-05",
             "schema": {
-              "example": "2050-09-05",
               "type": "string"
             }
           },
@@ -2587,8 +2883,8 @@
             "required": true,
             "in": "query",
             "description": "\n      Time until which available slots should be checked.\n      \n      Must be in UTC timezone as ISO 8601 datestring.\n      \n      You can pass date without hours which defaults to end of day or specify hours:\n      2024-08-20 (will have hours 23:59:59 aka at the very end of the date) or you can specify hours manually like 2024-08-20T18:00:00Z",
+            "example": "2050-09-06",
             "schema": {
-              "example": "2050-09-06",
               "type": "string"
             }
           },
@@ -2597,8 +2893,8 @@
             "required": false,
             "in": "query",
             "description": "Time zone in which the available slots should be returned. Defaults to UTC.",
+            "example": "Europe/Rome",
             "schema": {
-              "example": "Europe/Rome",
               "type": "string"
             }
           },
@@ -2607,8 +2903,8 @@
             "required": false,
             "in": "query",
             "description": "If event type has multiple possible durations then you can specify the desired duration here. Also, if you are fetching slots for a dynamic event then you can specify the duration her which defaults to 30, meaning that returned slots will be each 30 minutes long.",
+            "example": "60",
             "schema": {
-              "example": "60",
               "type": "number"
             }
           },
@@ -2617,8 +2913,8 @@
             "required": false,
             "in": "query",
             "description": "Format of slot times in response. Use 'range' to get start and end times.",
+            "example": "range",
             "schema": {
-              "example": "range",
               "enum": [
                 "range",
                 "time"
@@ -2631,8 +2927,8 @@
             "required": false,
             "in": "query",
             "description": "The unique identifier of the booking being rescheduled. When provided will ensure that the original booking time appears within the returned available slots when rescheduling.",
+            "example": "abc123def456",
             "schema": {
-              "example": "abc123def456",
               "type": "string"
             }
           },
@@ -2641,8 +2937,8 @@
             "required": false,
             "in": "query",
             "description": "Whether to queue the form response.",
+            "example": true,
             "schema": {
-              "example": true,
               "type": "boolean"
             }
           }
@@ -2775,11 +3071,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -2788,10 +3084,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           }
@@ -3220,8 +3516,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by status. If you want to filter by multiple statuses, separate them with a comma.",
+            "example": "?status=upcoming,past",
             "schema": {
-              "example": "?status=upcoming,past",
               "type": "array",
               "items": {
                 "type": "string",
@@ -3240,8 +3536,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by the attendee's email address.",
+            "example": "example@domain.com",
             "schema": {
-              "example": "example@domain.com",
               "type": "string"
             }
           },
@@ -3250,8 +3546,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by the attendee's name.",
+            "example": "John Doe",
             "schema": {
-              "example": "John Doe",
               "type": "string"
             }
           },
@@ -3260,8 +3556,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by event type ids belonging to the team. Event type ids must be separated by a comma.",
+            "example": "?eventTypeIds=100,200",
             "schema": {
-              "example": "?eventTypeIds=100,200",
               "type": "string"
             }
           },
@@ -3270,8 +3566,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by event type id belonging to the team.",
+            "example": "?eventTypeId=100",
             "schema": {
-              "example": "?eventTypeId=100",
               "type": "string"
             }
           },
@@ -3280,8 +3576,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings with start after this date string.",
+            "example": "?afterStart=2025-03-07T10:00:00.000Z",
             "schema": {
-              "example": "?afterStart=2025-03-07T10:00:00.000Z",
               "type": "string"
             }
           },
@@ -3290,8 +3586,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings with end before this date string.",
+            "example": "?beforeEnd=2025-03-07T11:00:00.000Z",
             "schema": {
-              "example": "?beforeEnd=2025-03-07T11:00:00.000Z",
               "type": "string"
             }
           },
@@ -3300,8 +3596,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their start time in ascending or descending order.",
+            "example": "?sortStart=asc OR ?sortStart=desc",
             "schema": {
-              "example": "?sortStart=asc OR ?sortStart=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -3314,8 +3610,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their end time in ascending or descending order.",
+            "example": "?sortEnd=asc OR ?sortEnd=desc",
             "schema": {
-              "example": "?sortEnd=asc OR ?sortEnd=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -3328,8 +3624,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their creation time (when booking was made) in ascending or descending order.",
+            "example": "?sortCreated=asc OR ?sortCreated=desc",
             "schema": {
-              "example": "?sortCreated=asc OR ?sortCreated=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -3342,10 +3638,10 @@
             "required": false,
             "in": "query",
             "description": "The number of items to return",
+            "example": 10,
             "schema": {
               "minimum": 1,
               "maximum": 250,
-              "example": 10,
               "type": "number"
             }
           },
@@ -3354,9 +3650,9 @@
             "required": false,
             "in": "query",
             "description": "The number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
-              "example": 0,
               "type": "number"
             }
           },
@@ -3439,8 +3735,8 @@
             "required": false,
             "in": "query",
             "description": "Filter booking references by type",
+            "example": "google_calendar",
             "schema": {
-              "example": "google_calendar",
               "enum": [
                 "google_calendar",
                 "office365_calendar",
@@ -4296,11 +4592,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -4309,10 +4605,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           }
@@ -4673,11 +4969,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -4686,10 +4982,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           }
@@ -5344,8 +5640,8 @@
             "required": true,
             "in": "query",
             "description": "\n      Time starting from which available slots should be checked.\n    \n      Must be in UTC timezone as ISO 8601 datestring.\n      \n      You can pass date without hours which defaults to start of day or specify hours:\n      2024-08-13 (will have hours 00:00:00 aka at very beginning of the date) or you can specify hours manually like 2024-08-13T09:00:00Z\n      ",
+            "example": "2050-09-05",
             "schema": {
-              "example": "2050-09-05",
               "type": "string"
             }
           },
@@ -5354,8 +5650,8 @@
             "required": true,
             "in": "query",
             "description": "\n      Time until which available slots should be checked.\n      \n      Must be in UTC timezone as ISO 8601 datestring.\n      \n      You can pass date without hours which defaults to end of day or specify hours:\n      2024-08-20 (will have hours 23:59:59 aka at the very end of the date) or you can specify hours manually like 2024-08-20T18:00:00Z",
+            "example": "2050-09-06",
             "schema": {
-              "example": "2050-09-06",
               "type": "string"
             }
           },
@@ -5364,8 +5660,8 @@
             "required": false,
             "in": "query",
             "description": "Time zone in which the available slots should be returned. Defaults to UTC.",
+            "example": "Europe/Rome",
             "schema": {
-              "example": "Europe/Rome",
               "type": "string"
             }
           },
@@ -5374,8 +5670,8 @@
             "required": false,
             "in": "query",
             "description": "If event type has multiple possible durations then you can specify the desired duration here. Also, if you are fetching slots for a dynamic event then you can specify the duration her which defaults to 30, meaning that returned slots will be each 30 minutes long.",
+            "example": "60",
             "schema": {
-              "example": "60",
               "type": "number"
             }
           },
@@ -5384,8 +5680,8 @@
             "required": false,
             "in": "query",
             "description": "Format of slot times in response. Use 'range' to get start and end times.",
+            "example": "range",
             "schema": {
-              "example": "range",
               "enum": [
                 "range",
                 "time"
@@ -5398,8 +5694,8 @@
             "required": false,
             "in": "query",
             "description": "The unique identifier of the booking being rescheduled. When provided will ensure that the original booking time appears within the returned available slots when rescheduling.",
+            "example": "abc123def456",
             "schema": {
-              "example": "abc123def456",
               "type": "string"
             }
           },
@@ -5408,8 +5704,8 @@
             "required": false,
             "in": "query",
             "description": "Whether to queue the form response.",
+            "example": true,
             "schema": {
-              "example": true,
               "type": "boolean"
             }
           }
@@ -5550,11 +5846,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -5563,10 +5859,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           }
@@ -5856,11 +6152,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -5869,10 +6165,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           }
@@ -6202,10 +6498,10 @@
             "required": false,
             "in": "query",
             "description": "The number of items to return",
+            "example": 10,
             "schema": {
               "minimum": 1,
               "maximum": 1000,
-              "example": 10,
               "type": "number"
             }
           },
@@ -6214,9 +6510,9 @@
             "required": false,
             "in": "query",
             "description": "The number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
-              "example": 0,
               "type": "number"
             }
           },
@@ -6237,8 +6533,8 @@
             "required": false,
             "in": "query",
             "description": "Filter by assigned attribute option ids. ids must be separated by a comma.",
+            "example": "?assignedOptionIds=aaaaaaaa-bbbb-cccc-dddd-eeeeee1eee,aaaaaaaa-bbbb-cccc-dddd-eeeeee2eee",
             "schema": {
-              "example": "?assignedOptionIds=aaaaaaaa-bbbb-cccc-dddd-eeeeee1eee,aaaaaaaa-bbbb-cccc-dddd-eeeeee2eee",
               "type": "array",
               "items": {
                 "type": "string"
@@ -6250,9 +6546,9 @@
             "required": false,
             "in": "query",
             "description": "Query operator used to filter assigned options, AND by default.",
+            "example": "NONE",
             "schema": {
               "default": "AND",
-              "example": "NONE",
               "enum": [
                 "OR",
                 "AND",
@@ -6266,8 +6562,8 @@
             "required": false,
             "in": "query",
             "description": "Filter by teamIds. Team ids must be separated by a comma.",
+            "example": "?teamIds=100,200",
             "schema": {
-              "example": "?teamIds=100,200",
               "type": "array",
               "items": {
                 "type": "number"
@@ -6543,8 +6839,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by status. If you want to filter by multiple statuses, separate them with a comma.",
+            "example": "?status=upcoming,past",
             "schema": {
-              "example": "?status=upcoming,past",
               "type": "array",
               "items": {
                 "type": "string",
@@ -6563,8 +6859,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by the attendee's email address.",
+            "example": "example@domain.com",
             "schema": {
-              "example": "example@domain.com",
               "type": "string"
             }
           },
@@ -6573,8 +6869,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by the attendee's name.",
+            "example": "John Doe",
             "schema": {
-              "example": "John Doe",
               "type": "string"
             }
           },
@@ -6583,8 +6879,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by the booking Uid.",
+            "example": "2NtaeaVcKfpmSZ4CthFdfk",
             "schema": {
-              "example": "2NtaeaVcKfpmSZ4CthFdfk",
               "type": "string"
             }
           },
@@ -6593,8 +6889,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by event type ids belonging to the user. Event type ids must be separated by a comma.",
+            "example": "?eventTypeIds=100,200",
             "schema": {
-              "example": "?eventTypeIds=100,200",
               "type": "string"
             }
           },
@@ -6603,8 +6899,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by event type id belonging to the user.",
+            "example": "?eventTypeId=100",
             "schema": {
-              "example": "?eventTypeId=100",
               "type": "string"
             }
           },
@@ -6613,8 +6909,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by team ids that user is part of. Team ids must be separated by a comma.",
+            "example": "?teamIds=50,60",
             "schema": {
-              "example": "?teamIds=50,60",
               "type": "string"
             }
           },
@@ -6623,8 +6919,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by team id that user is part of",
+            "example": "?teamId=50",
             "schema": {
-              "example": "?teamId=50",
               "type": "string"
             }
           },
@@ -6633,8 +6929,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings with start after this date string.",
+            "example": "?afterStart=2025-03-07T10:00:00.000Z",
             "schema": {
-              "example": "?afterStart=2025-03-07T10:00:00.000Z",
               "type": "string"
             }
           },
@@ -6643,8 +6939,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings with end before this date string.",
+            "example": "?beforeEnd=2025-03-07T11:00:00.000Z",
             "schema": {
-              "example": "?beforeEnd=2025-03-07T11:00:00.000Z",
               "type": "string"
             }
           },
@@ -6653,8 +6949,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings that have been created after this date string.",
+            "example": "?afterCreatedAt=2025-03-07T10:00:00.000Z",
             "schema": {
-              "example": "?afterCreatedAt=2025-03-07T10:00:00.000Z",
               "type": "string"
             }
           },
@@ -6663,8 +6959,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings that have been created before this date string.",
+            "example": "?beforeCreatedAt=2025-03-14T11:00:00.000Z",
             "schema": {
-              "example": "?beforeCreatedAt=2025-03-14T11:00:00.000Z",
               "type": "string"
             }
           },
@@ -6673,8 +6969,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings that have been updated after this date string.",
+            "example": "?afterUpdatedAt=2025-03-07T10:00:00.000Z",
             "schema": {
-              "example": "?afterUpdatedAt=2025-03-07T10:00:00.000Z",
               "type": "string"
             }
           },
@@ -6683,8 +6979,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings that have been updated before this date string.",
+            "example": "?beforeUpdatedAt=2025-03-14T11:00:00.000Z",
             "schema": {
-              "example": "?beforeUpdatedAt=2025-03-14T11:00:00.000Z",
               "type": "string"
             }
           },
@@ -6693,8 +6989,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their start time in ascending or descending order.",
+            "example": "?sortStart=asc OR ?sortStart=desc",
             "schema": {
-              "example": "?sortStart=asc OR ?sortStart=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -6707,8 +7003,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their end time in ascending or descending order.",
+            "example": "?sortEnd=asc OR ?sortEnd=desc",
             "schema": {
-              "example": "?sortEnd=asc OR ?sortEnd=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -6721,8 +7017,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their creation time (when booking was made) in ascending or descending order.",
+            "example": "?sortCreated=asc OR ?sortCreated=desc",
             "schema": {
-              "example": "?sortCreated=asc OR ?sortCreated=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -6735,8 +7031,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their updated time (for example when booking status changes) in ascending or descending order.",
+            "example": "?sortUpdated=asc OR ?sortUpdated=desc",
             "schema": {
-              "example": "?sortUpdated=asc OR ?sortUpdated=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -6749,9 +7045,9 @@
             "required": false,
             "in": "query",
             "description": "The number of items to return",
+            "example": 10,
             "schema": {
               "default": 100,
-              "example": 10,
               "type": "number"
             }
           },
@@ -6760,9 +7056,9 @@
             "required": false,
             "in": "query",
             "description": "The number of items to skip",
+            "example": 0,
             "schema": {
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           }
@@ -6822,11 +7118,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -6835,10 +7131,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           },
@@ -6847,8 +7143,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their start time in ascending or descending order.",
+            "example": "?sortStart=asc OR ?sortStart=desc",
             "schema": {
-              "example": "?sortStart=asc OR ?sortStart=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -6861,8 +7157,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their end time in ascending or descending order.",
+            "example": "?sortEnd=asc OR ?sortEnd=desc",
             "schema": {
-              "example": "?sortEnd=asc OR ?sortEnd=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -7103,11 +7399,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -7116,10 +7412,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           },
@@ -7128,8 +7424,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their start time in ascending or descending order.",
+            "example": "?sortStart=asc OR ?sortStart=desc",
             "schema": {
-              "example": "?sortStart=asc OR ?sortStart=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -7142,8 +7438,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their end time in ascending or descending order.",
+            "example": "?sortEnd=asc OR ?sortEnd=desc",
             "schema": {
-              "example": "?sortEnd=asc OR ?sortEnd=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -7156,8 +7452,8 @@
             "required": false,
             "in": "query",
             "description": "Filter ooo entries by the user email address. user must be within your organization.",
+            "example": "example@domain.com",
             "schema": {
-              "example": "example@domain.com",
               "type": "string"
             }
           }
@@ -7545,11 +7841,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -7558,10 +7854,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           }
@@ -7945,8 +8241,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by status. If you want to filter by multiple statuses, separate them with a comma.",
+            "example": "?status=upcoming,past",
             "schema": {
-              "example": "?status=upcoming,past",
               "type": "array",
               "items": {
                 "type": "string",
@@ -7965,8 +8261,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by the attendee's email address.",
+            "example": "example@domain.com",
             "schema": {
-              "example": "example@domain.com",
               "type": "string"
             }
           },
@@ -7975,8 +8271,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by the attendee's name.",
+            "example": "John Doe",
             "schema": {
-              "example": "John Doe",
               "type": "string"
             }
           },
@@ -7985,8 +8281,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by the booking Uid.",
+            "example": "2NtaeaVcKfpmSZ4CthFdfk",
             "schema": {
-              "example": "2NtaeaVcKfpmSZ4CthFdfk",
               "type": "string"
             }
           },
@@ -7995,8 +8291,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by event type ids belonging to the user. Event type ids must be separated by a comma.",
+            "example": "?eventTypeIds=100,200",
             "schema": {
-              "example": "?eventTypeIds=100,200",
               "type": "string"
             }
           },
@@ -8005,8 +8301,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by event type id belonging to the user.",
+            "example": "?eventTypeId=100",
             "schema": {
-              "example": "?eventTypeId=100",
               "type": "string"
             }
           },
@@ -8015,8 +8311,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by team ids that user is part of. Team ids must be separated by a comma.",
+            "example": "?teamIds=50,60",
             "schema": {
-              "example": "?teamIds=50,60",
               "type": "string"
             }
           },
@@ -8025,8 +8321,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings by team id that user is part of",
+            "example": "?teamId=50",
             "schema": {
-              "example": "?teamId=50",
               "type": "string"
             }
           },
@@ -8035,8 +8331,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings with start after this date string.",
+            "example": "?afterStart=2025-03-07T10:00:00.000Z",
             "schema": {
-              "example": "?afterStart=2025-03-07T10:00:00.000Z",
               "type": "string"
             }
           },
@@ -8045,8 +8341,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings with end before this date string.",
+            "example": "?beforeEnd=2025-03-07T11:00:00.000Z",
             "schema": {
-              "example": "?beforeEnd=2025-03-07T11:00:00.000Z",
               "type": "string"
             }
           },
@@ -8055,8 +8351,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings that have been created after this date string.",
+            "example": "?afterCreatedAt=2025-03-07T10:00:00.000Z",
             "schema": {
-              "example": "?afterCreatedAt=2025-03-07T10:00:00.000Z",
               "type": "string"
             }
           },
@@ -8065,8 +8361,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings that have been created before this date string.",
+            "example": "?beforeCreatedAt=2025-03-14T11:00:00.000Z",
             "schema": {
-              "example": "?beforeCreatedAt=2025-03-14T11:00:00.000Z",
               "type": "string"
             }
           },
@@ -8075,8 +8371,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings that have been updated after this date string.",
+            "example": "?afterUpdatedAt=2025-03-07T10:00:00.000Z",
             "schema": {
-              "example": "?afterUpdatedAt=2025-03-07T10:00:00.000Z",
               "type": "string"
             }
           },
@@ -8085,8 +8381,8 @@
             "required": false,
             "in": "query",
             "description": "Filter bookings that have been updated before this date string.",
+            "example": "?beforeUpdatedAt=2025-03-14T11:00:00.000Z",
             "schema": {
-              "example": "?beforeUpdatedAt=2025-03-14T11:00:00.000Z",
               "type": "string"
             }
           },
@@ -8095,8 +8391,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their start time in ascending or descending order.",
+            "example": "?sortStart=asc OR ?sortStart=desc",
             "schema": {
-              "example": "?sortStart=asc OR ?sortStart=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -8109,8 +8405,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their end time in ascending or descending order.",
+            "example": "?sortEnd=asc OR ?sortEnd=desc",
             "schema": {
-              "example": "?sortEnd=asc OR ?sortEnd=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -8123,8 +8419,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their creation time (when booking was made) in ascending or descending order.",
+            "example": "?sortCreated=asc OR ?sortCreated=desc",
             "schema": {
-              "example": "?sortCreated=asc OR ?sortCreated=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -8137,8 +8433,8 @@
             "required": false,
             "in": "query",
             "description": "Sort results by their updated time (for example when booking status changes) in ascending or descending order.",
+            "example": "?sortUpdated=asc OR ?sortUpdated=desc",
             "schema": {
-              "example": "?sortUpdated=asc OR ?sortUpdated=desc",
               "enum": [
                 "asc",
                 "desc"
@@ -8151,9 +8447,9 @@
             "required": false,
             "in": "query",
             "description": "The number of items to return",
+            "example": 10,
             "schema": {
               "default": 100,
-              "example": 10,
               "type": "number"
             }
           },
@@ -8162,9 +8458,9 @@
             "required": false,
             "in": "query",
             "description": "The number of items to skip",
+            "example": 0,
             "schema": {
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           },
@@ -8227,6 +8523,65 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/GetBookingOutput_2024_08_13"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Bookings"
+        ]
+      },
+      "patch": {
+        "operationId": "BookingsController_2024_08_13_updateBooking",
+        "summary": "Update a booking",
+        "description": "Update an existing booking by its UID.",
+        "parameters": [
+          {
+            "name": "cal-api-version",
+            "in": "header",
+            "description": "Must be set to 2024-08-13",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2024-08-13"
+            }
+          },
+          {
+            "name": "bookingUid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "value must be `Bearer <token>` where `<token>` is api key prefixed with cal_ or managed user access token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBookingInput_2024_08_13"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateBookingOutput_2024_08_13"
                 }
               }
             }
@@ -8813,8 +9168,8 @@
             "required": false,
             "in": "query",
             "description": "Filter booking references by type",
+            "example": "google_calendar",
             "schema": {
-              "example": "google_calendar",
               "enum": [
                 "google_calendar",
                 "office365_calendar",
@@ -8843,6 +9198,47 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/BookingReferencesOutput_2024_08_13"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Bookings"
+        ]
+      }
+    },
+    "/v2/bookings/attendee/{attendeeEmail}/next": {
+      "get": {
+        "operationId": "BookingsController_2024_08_13_getNextBookingByClient",
+        "summary": "Get next booking by attendeeEmail",
+        "parameters": [
+          {
+            "name": "cal-api-version",
+            "in": "header",
+            "description": "Must be set to 2024-08-13",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "2024-08-13"
+            }
+          },
+          {
+            "name": "attendeeEmail",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookingOutput_2024_08_13"
                 }
               }
             }
@@ -9054,8 +9450,8 @@
             "required": true,
             "in": "query",
             "description": "The timezone of the logged in user represented as a string",
+            "example": "America/New_York",
             "schema": {
-              "example": "America/New_York",
               "type": "string"
             }
           },
@@ -9064,8 +9460,8 @@
             "required": false,
             "in": "query",
             "description": "The starting date for the busy times query",
+            "example": "2023-10-01",
             "schema": {
-              "example": "2023-10-01",
               "type": "string"
             }
           },
@@ -9074,8 +9470,8 @@
             "required": false,
             "in": "query",
             "description": "The ending date for the busy times query",
+            "example": "2023-10-31",
             "schema": {
-              "example": "2023-10-31",
               "type": "string"
             }
           },
@@ -10141,11 +10537,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -10154,10 +10550,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           }
@@ -10614,11 +11010,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -10627,10 +11023,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           },
@@ -10638,9 +11034,9 @@
             "name": "slug",
             "required": false,
             "in": "query",
+            "example": "organization-slug",
             "description": "The slug of the managed organization",
             "schema": {
-              "example": "organization-slug",
               "type": "string"
             }
           },
@@ -10648,9 +11044,9 @@
             "name": "metadataKey",
             "required": false,
             "in": "query",
+            "example": "metadata-key",
             "description": "The key of the metadata - it is case sensitive so provide exactly as stored. If you provide it then you must also provide metadataValue",
             "schema": {
-              "example": "metadata-key",
               "type": "string"
             }
           },
@@ -10658,9 +11054,9 @@
             "name": "metadataValue",
             "required": false,
             "in": "query",
+            "example": "metadata-value",
             "description": "The value of the metadata - it is case sensitive so provide exactly as stored. If you provide it then you must also provide metadataKey",
             "schema": {
-              "example": "metadata-value",
               "type": "string"
             }
           }
@@ -11322,11 +11718,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -11335,10 +11731,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           },
@@ -11387,11 +11783,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -11400,10 +11796,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           },
@@ -11550,8 +11946,8 @@
             "required": true,
             "in": "query",
             "description": "\n      Time starting from which available slots should be checked.\n    \n      Must be in UTC timezone as ISO 8601 datestring.\n      \n      You can pass date without hours which defaults to start of day or specify hours:\n      2024-08-13 (will have hours 00:00:00 aka at very beginning of the date) or you can specify hours manually like 2024-08-13T09:00:00Z\n      ",
+            "example": "2050-09-05",
             "schema": {
-              "example": "2050-09-05",
               "type": "string"
             }
           },
@@ -11560,8 +11956,8 @@
             "required": true,
             "in": "query",
             "description": "\n      Time until which available slots should be checked.\n      \n      Must be in UTC timezone as ISO 8601 datestring.\n      \n      You can pass date without hours which defaults to end of day or specify hours:\n      2024-08-20 (will have hours 23:59:59 aka at the very end of the date) or you can specify hours manually like 2024-08-20T18:00:00Z",
+            "example": "2050-09-06",
             "schema": {
-              "example": "2050-09-06",
               "type": "string"
             }
           },
@@ -11570,8 +11966,8 @@
             "required": false,
             "in": "query",
             "description": "Time zone in which the available slots should be returned. Defaults to UTC.",
+            "example": "Europe/Rome",
             "schema": {
-              "example": "Europe/Rome",
               "type": "string"
             }
           },
@@ -11580,8 +11976,8 @@
             "required": false,
             "in": "query",
             "description": "If event type has multiple possible durations then you can specify the desired duration here. Also, if you are fetching slots for a dynamic event then you can specify the duration her which defaults to 30, meaning that returned slots will be each 30 minutes long.",
+            "example": "60",
             "schema": {
-              "example": "60",
               "type": "number"
             }
           },
@@ -11590,8 +11986,8 @@
             "required": false,
             "in": "query",
             "description": "Format of slot times in response. Use 'range' to get start and end times.",
+            "example": "range",
             "schema": {
-              "example": "range",
               "enum": [
                 "range",
                 "time"
@@ -11604,8 +12000,8 @@
             "required": false,
             "in": "query",
             "description": "The unique identifier of the booking being rescheduled. When provided will ensure that the original booking time appears within the returned available slots when rescheduling.",
+            "example": "abc123def456",
             "schema": {
-              "example": "abc123def456",
               "type": "string"
             }
           },
@@ -12053,108 +12449,96 @@
             "required": false,
             "in": "query",
             "description": "The unique identifier of the booking being rescheduled. When provided will ensure that the original booking time appears within the returned available slots when rescheduling.",
-            "schema": {
-              "example": "abc123def456"
-            }
+            "example": "abc123def456",
+            "schema": {}
           },
           {
             "name": "start",
             "required": true,
             "in": "query",
             "description": "\n      Time starting from which available slots should be checked.\n\n      Must be in UTC timezone as ISO 8601 datestring.\n\n      You can pass date without hours which defaults to start of day or specify hours:\n      2024-08-13 (will have hours 00:00:00 aka at very beginning of the date) or you can specify hours manually like 2024-08-13T09:00:00Z.",
-            "schema": {
-              "example": "2050-09-05"
-            }
+            "example": "2050-09-05",
+            "schema": {}
           },
           {
             "name": "end",
             "required": true,
             "in": "query",
             "description": "\n    Time until which available slots should be checked.\n\n    Must be in UTC timezone as ISO 8601 datestring.\n\n    You can pass date without hours which defaults to end of day or specify hours:\n    2024-08-20 (will have hours 23:59:59 aka at the very end of the date) or you can specify hours manually like 2024-08-20T18:00:00Z.",
-            "schema": {
-              "example": "2050-09-06"
-            }
+            "example": "2050-09-06",
+            "schema": {}
           },
           {
             "name": "organizationSlug",
             "required": false,
             "in": "query",
             "description": "The slug of the organization to which user with username belongs or team with teamSlug belongs.",
-            "schema": {
-              "example": "org-slug"
-            }
+            "example": "org-slug",
+            "schema": {}
           },
           {
             "name": "teamSlug",
             "required": false,
             "in": "query",
             "description": "The slug of the team who owns event type with eventTypeSlug - used when slots are checked for team event type.",
-            "schema": {
-              "example": "team-slug"
-            }
+            "example": "team-slug",
+            "schema": {}
           },
           {
             "name": "username",
             "required": false,
             "in": "query",
             "description": "The username of the user who owns event type with eventTypeSlug - used when slots are checked for individual user event type.",
-            "schema": {
-              "example": "bob"
-            }
+            "example": "bob",
+            "schema": {}
           },
           {
             "name": "eventTypeSlug",
             "required": false,
             "in": "query",
             "description": "The slug of the event type for which available slots should be checked. If slug is provided then username or teamSlug must be provided too and if relevant organizationSlug too.",
-            "schema": {
-              "example": "event-type-slug"
-            }
+            "example": "event-type-slug",
+            "schema": {}
           },
           {
             "name": "eventTypeId",
             "required": false,
             "in": "query",
             "description": "The ID of the event type for which available slots should be checked.",
-            "schema": {
-              "example": "100"
-            }
+            "example": "100",
+            "schema": {}
           },
           {
             "name": "usernames",
             "required": false,
             "in": "query",
             "description": "The usernames for which available slots should be checked separated by a comma.\n\n    Checking slots by usernames is used mainly for dynamic events where there is no specific event but we just want to know when 2 or more people are available.\n\n    Must contain at least 2 usernames.",
-            "schema": {
-              "example": "alice,bob"
-            }
+            "example": "alice,bob",
+            "schema": {}
           },
           {
             "name": "format",
             "required": false,
             "in": "query",
             "description": "Format of slot times in response. Use 'range' to get start and end times. Use 'time' or omit this query parameter to get only start time.",
-            "schema": {
-              "example": "range"
-            }
+            "example": "range",
+            "schema": {}
           },
           {
             "name": "duration",
             "required": false,
             "in": "query",
             "description": "If event type has multiple possible durations then you can specify the desired duration here. Also, if you are fetching slots for a dynamic event then you can specify the duration her which defaults to 30, meaning that returned slots will be each 30 minutes long.",
-            "schema": {
-              "example": "60"
-            }
+            "example": "60",
+            "schema": {}
           },
           {
             "name": "timeZone",
             "required": false,
             "in": "query",
             "description": "Time zone in which the available slots should be returned. Defaults to UTC.",
-            "schema": {
-              "example": "Europe/Rome"
-            }
+            "example": "Europe/Rome",
+            "schema": {}
           }
         ],
         "responses": {
@@ -13124,11 +13508,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -13137,10 +13521,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           }
@@ -13339,11 +13723,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -13352,10 +13736,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           }
@@ -13583,11 +13967,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -13596,10 +13980,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           },
@@ -13648,11 +14032,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -13661,10 +14045,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           },
@@ -13836,6 +14220,41 @@
                 }
               }
             }
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/users/generate-api-key": {
+      "post": {
+        "operationId": "UsersController_generateApiKey",
+        "summary": "Generate a new API key for the authenticated user",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "API key authentication in the format 'Bearer <api_key>'",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "API key generated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenerateApiKeyResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing API key"
           }
         },
         "tags": [
@@ -14025,11 +14444,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -14038,10 +14457,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           },
@@ -14082,11 +14501,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -14095,10 +14514,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           },
@@ -14269,11 +14688,11 @@
             "required": false,
             "in": "query",
             "description": "Maximum number of items to return",
+            "example": 25,
             "schema": {
               "minimum": 1,
               "maximum": 250,
               "default": 250,
-              "example": 25,
               "type": "number"
             }
           },
@@ -14282,10 +14701,10 @@
             "required": false,
             "in": "query",
             "description": "Number of items to skip",
+            "example": 0,
             "schema": {
               "minimum": 0,
               "default": 0,
-              "example": 0,
               "type": "number"
             }
           }
@@ -15365,6 +15784,30 @@
         },
         "required": [
           "status",
+          "message"
+        ]
+      },
+      "GenerateApiKeyResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "success",
+              "error"
+            ],
+            "example": "success"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ApiKeyOutput"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "data",
           "message"
         ]
       },
@@ -16568,6 +17011,18 @@
           "enableAutomaticRecordingForOrganizer": {
             "type": "boolean",
             "description": "If true, enables the automatic recording for the event when organizer joins the call"
+          },
+          "enableAutomaticTranscription": {
+            "type": "boolean",
+            "description": "If true, enables the automatic transcription for the event whenever someone joins the call"
+          },
+          "disableTranscriptionForGuests": {
+            "type": "boolean",
+            "description": "If true, the guests will not be able to receive transcription of the meeting"
+          },
+          "disableTranscriptionForOrganizer": {
+            "type": "boolean",
+            "description": "If true, the organizer will not be able to receive transcription of the meeting"
           }
         }
       },
@@ -24950,34 +25405,6 @@
           "name"
         ]
       },
-      "CreateTeamOutput": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "string",
-            "example": "success",
-            "enum": [
-              "success",
-              "error"
-            ]
-          },
-          "data": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Output"
-              },
-              {
-                "$ref": "#/components/schemas/TeamOutputDto"
-              }
-            ],
-            "description": "Either an Output object or a TeamOutputDto."
-          }
-        },
-        "required": [
-          "status",
-          "data"
-        ]
-      },
       "TeamOutputDto": {
         "type": "object",
         "properties": {
@@ -25056,6 +25483,53 @@
           "id",
           "name",
           "isOrganization"
+        ]
+      },
+      "Output": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "paymentLink": {
+            "type": "string"
+          },
+          "pendingTeam": {
+            "$ref": "#/components/schemas/TeamOutputDto"
+          }
+        },
+        "required": [
+          "message",
+          "paymentLink",
+          "pendingTeam"
+        ]
+      },
+      "CreateTeamOutput": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "success",
+            "enum": [
+              "success",
+              "error"
+            ]
+          },
+          "data": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Output"
+              },
+              {
+                "$ref": "#/components/schemas/TeamOutputDto"
+              }
+            ],
+            "description": "Either an Output object or a TeamOutputDto."
+          }
+        },
+        "required": [
+          "status",
+          "data"
         ]
       },
       "GetTeamOutput": {
@@ -25267,6 +25741,25 @@
         },
         "required": [
           "status"
+        ]
+      },
+      "MicrosoftServiceAccountKeyInput": {
+        "type": "object",
+        "properties": {
+          "private_key": {
+            "type": "string"
+          },
+          "tenant_id": {
+            "type": "string"
+          },
+          "client_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "private_key",
+          "tenant_id",
+          "client_id"
         ]
       },
       "GoogleServiceAccountKeyInput": {
@@ -29178,6 +29671,235 @@
           "data"
         ]
       },
+      "UpdateBookingAttendee": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "email": {
+            "type": "string",
+            "example": "john@example.com"
+          },
+          "timeZone": {
+            "type": "string",
+            "example": "America/New_York"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "example": "+1234567890"
+          }
+        }
+      },
+      "UpdateBookingInput_2024_08_13": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Updated Consultation"
+          },
+          "description": {
+            "type": "string",
+            "example": "Updated description."
+          },
+          "startTime": {
+            "type": "string",
+            "example": "2024-08-13T16:00:00Z"
+          },
+          "endTime": {
+            "type": "string",
+            "example": "2024-08-13T17:00:00Z"
+          },
+          "location": {
+            "type": "string",
+            "example": "New Location"
+          },
+          "metadata": {
+            "type": "object",
+            "example": {
+              "newKey": "newValue"
+            }
+          },
+          "attendees": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdateBookingAttendee"
+            }
+          },
+          "bookingFieldsResponses": {
+            "type": "object",
+            "description": "Booking field responses consisting of an object with booking field slug as keys and user response as values.",
+            "example": {
+              "customField": "updatedCustomValue"
+            }
+          }
+        }
+      },
+      "UpdateBookingOutput_2024_08_13": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 123
+          },
+          "uid": {
+            "type": "string",
+            "example": "booking_uid_123"
+          },
+          "title": {
+            "type": "string",
+            "example": "Consultation"
+          },
+          "description": {
+            "type": "string",
+            "example": "Learn how to integrate scheduling into marketplace."
+          },
+          "hosts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BookingHost"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "cancelled",
+              "accepted",
+              "rejected",
+              "pending"
+            ],
+            "example": "accepted"
+          },
+          "cancellationReason": {
+            "type": "string",
+            "example": "User requested cancellation"
+          },
+          "cancelledByEmail": {
+            "type": "string",
+            "example": "canceller@example.com"
+          },
+          "reschedulingReason": {
+            "type": "string",
+            "example": "User rescheduled the event"
+          },
+          "rescheduledByEmail": {
+            "type": "string",
+            "example": "rescheduler@example.com"
+          },
+          "rescheduledFromUid": {
+            "type": "string",
+            "example": "previous_uid_123",
+            "description": "UID of the previous booking from which this booking was rescheduled."
+          },
+          "rescheduledToUid": {
+            "type": "string",
+            "example": "new_uid_456",
+            "description": "UID of the new booking to which this booking was rescheduled."
+          },
+          "start": {
+            "type": "string",
+            "example": "2024-08-13T15:30:00Z"
+          },
+          "end": {
+            "type": "string",
+            "example": "2024-08-13T16:30:00Z"
+          },
+          "duration": {
+            "type": "number",
+            "example": 60
+          },
+          "eventTypeId": {
+            "type": "number",
+            "example": 50,
+            "deprecated": true,
+            "description": "Deprecated - rely on 'eventType' object containing the id instead."
+          },
+          "eventType": {
+            "$ref": "#/components/schemas/EventType"
+          },
+          "meetingUrl": {
+            "type": "string",
+            "description": "Deprecated - rely on 'location' field instead.",
+            "example": "https://example.com/recurring-meeting",
+            "deprecated": true
+          },
+          "location": {
+            "type": "string",
+            "example": "https://example.com/meeting"
+          },
+          "absentHost": {
+            "type": "boolean",
+            "example": true
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2024-08-13T15:30:00Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "nullable": true,
+            "example": "2024-08-13T15:30:00Z"
+          },
+          "metadata": {
+            "type": "object",
+            "example": {
+              "key": "value"
+            }
+          },
+          "rating": {
+            "type": "number",
+            "example": 4
+          },
+          "icsUid": {
+            "type": "string",
+            "example": "ics_uid_123",
+            "description": "UID of ICS event."
+          },
+          "attendees": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BookingAttendee"
+            }
+          },
+          "guests": {
+            "example": [
+              "guest1@example.com",
+              "guest2@example.com"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "bookingFieldsResponses": {
+            "type": "object",
+            "description": "Booking field responses consisting of an object with booking field slug as keys and user response as values.",
+            "example": {
+              "customField": "customValue"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "uid",
+          "title",
+          "description",
+          "hosts",
+          "status",
+          "start",
+          "end",
+          "duration",
+          "eventTypeId",
+          "eventType",
+          "location",
+          "absentHost",
+          "createdAt",
+          "updatedAt",
+          "attendees",
+          "bookingFieldsResponses"
+        ]
+      },
       "CreateTeamMembershipInput": {
         "type": "object",
         "properties": {
@@ -29662,6 +30384,155 @@
           "data"
         ]
       },
+      "CalendarEventVideoLocation": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "default": "video",
+            "enum": [
+              "video"
+            ],
+            "description": "Indicates this is a video conference location"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL for joining the video conference"
+          },
+          "label": {
+            "type": "string",
+            "nullable": true,
+            "description": "Display name for the video conference"
+          },
+          "password": {
+            "type": "string",
+            "nullable": true,
+            "description": "Password required to join the video conference"
+          },
+          "meetingCode": {
+            "type": "string",
+            "nullable": true,
+            "description": "Meeting code or ID required to join the conference"
+          },
+          "accessCode": {
+            "type": "string",
+            "nullable": true,
+            "description": "Access code required to join the conference"
+          }
+        },
+        "required": [
+          "type",
+          "url"
+        ]
+      },
+      "CalendarEventPhoneLocation": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "default": "phone",
+            "enum": [
+              "phone"
+            ],
+            "description": "Indicates this is a phone conference location"
+          },
+          "url": {
+            "type": "string",
+            "description": "Phone number or URL for dialing into the conference"
+          },
+          "label": {
+            "type": "string",
+            "nullable": true,
+            "description": "Display name for the phone conference"
+          },
+          "pin": {
+            "type": "string",
+            "nullable": true,
+            "description": "PIN number required for the phone conference"
+          },
+          "password": {
+            "type": "string",
+            "nullable": true,
+            "description": "Password required for the phone conference"
+          },
+          "accessCode": {
+            "type": "string",
+            "nullable": true,
+            "description": "Access code required for the phone conference"
+          },
+          "regionCode": {
+            "type": "string",
+            "nullable": true,
+            "description": "Country/region code for the phone number"
+          }
+        },
+        "required": [
+          "type",
+          "url"
+        ]
+      },
+      "CalendarEventSipLocation": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "default": "sip",
+            "enum": [
+              "sip"
+            ],
+            "description": "Indicates this is a SIP (Session Initiation Protocol) conference location"
+          },
+          "url": {
+            "type": "string",
+            "description": "SIP URL for joining the conference"
+          },
+          "label": {
+            "type": "string",
+            "nullable": true,
+            "description": "Display name for the SIP conference"
+          },
+          "pin": {
+            "type": "string",
+            "nullable": true,
+            "description": "PIN number required for the SIP conference"
+          },
+          "password": {
+            "type": "string",
+            "nullable": true,
+            "description": "Password required for the SIP conference"
+          }
+        },
+        "required": [
+          "type",
+          "url"
+        ]
+      },
+      "CalendarEventMoreLocation": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "default": "more",
+            "enum": [
+              "more"
+            ],
+            "description": "Indicates this is an additional conference location type"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL for accessing this location"
+          },
+          "label": {
+            "type": "string",
+            "nullable": true,
+            "description": "Display name for this location"
+          }
+        },
+        "required": [
+          "type",
+          "url"
+        ]
+      },
       "CalendarEventResponseStatus": {
         "type": "string",
         "description": "Response status of the attendee",
@@ -29979,6 +30850,19 @@
             "$ref": "#/components/schemas/CalendarEventStatus"
           }
         }
+      },
+      "CountBookingsOutput": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "number",
+            "description": "The total number of bookings matching the criteria.",
+            "example": 100
+          }
+        },
+        "required": [
+          "count"
+        ]
       },
       "RequestEmailVerificationInput": {
         "type": "object",

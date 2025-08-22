@@ -24,7 +24,7 @@ const CALENDAR_SCOPES = [
 
 @Injectable()
 export class GoogleCalendarService implements OAuthCalendarApp {
-  public readonly redirectUri = `${this.config.get("api.url")}/gcal/oauth/save`;
+  public readonly redirectUri = `${this.config.get("api.url")}/calendars/google/save`;
   private gcalResponseSchema = z.object({ client_id: z.string(), client_secret: z.string() });
   private logger = new Logger("GcalService");
 
@@ -66,6 +66,7 @@ export class GoogleCalendarService implements OAuthCalendarApp {
 
   async getCalendarRedirectUrl(accessToken: string, origin: string, redir?: string, isDryRun?: boolean) {
     const oAuth2Client = await this.getOAuthClient(this.redirectUri);
+
     const state: CalendarState = {
       accessToken,
       origin,
@@ -145,7 +146,11 @@ export class GoogleCalendarService implements OAuthCalendarApp {
 
     const parsedCode = z.string().parse(code);
 
-    const ownerId = await this.tokensRepository.getAccessTokenOwnerId(accessToken);
+    let ownerId: number | undefined;
+
+    if (accessToken.startsWith(this.config.get("api.keyPrefix", "cal_")))
+      ownerId = await this.tokensRepository.getApiKeyOwnerId(accessToken);
+    else ownerId = await this.tokensRepository.getAccessTokenOwnerId(accessToken);
 
     if (!ownerId) {
       throw new UnauthorizedException("Invalid Access token.");
@@ -205,5 +210,26 @@ export class GoogleCalendarService implements OAuthCalendarApp {
     }
 
     return { url: redir || origin };
+  }
+
+  // New methods for OAuth callback in API v2
+  async getAccessTokenOwnerId(accessToken: string): Promise<number | null> {
+    const ownerId = await this.tokensRepository.getAccessTokenOwnerId(accessToken);
+    return ownerId ?? null;
+  }
+
+  async getAppBySlug(slug: string) {
+    return await this.appsRepository.getAppBySlug(slug);
+  }
+
+  async exchangeCodeForTokens(
+    clientId: string,
+    clientSecret: string,
+    code: string,
+    redirectUri: string
+  ): Promise<any> {
+    const oAuth2Client = new OAuth2Client(clientId, clientSecret, redirectUri);
+    const token = await oAuth2Client.getToken(code);
+    return token.tokens;
   }
 }

@@ -69,7 +69,6 @@ export class CreateTeamInput {
   })
   @IsObject()
   @IsOptional()
-  @ValidateMetadata()
   metadata?: Metadata;
 
   @IsOptional()

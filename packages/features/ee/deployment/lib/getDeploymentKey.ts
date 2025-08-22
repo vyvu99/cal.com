@@ -18,17 +18,6 @@ export async function getDeploymentSignatureToken(
   if (process.env.CAL_SIGNATURE_TOKEN) {
     return process.env.CAL_SIGNATURE_TOKEN;
   }
-  const signatureTokenEncrypted = await deploymentRepo.getSignatureToken(1);
-
-  if (!signatureTokenEncrypted) {
-    log.error("Signature token not found in database or set in environment variable");
-    return null;
-  }
-
-  const decryptedSignatureToken = symmetricDecrypt(
-    signatureTokenEncrypted,
-    process.env.CALENDSO_ENCRYPTION_KEY || ""
-  );
-
-  return decryptedSignatureToken || null;
+  // If CAL_SIGNATURE_TOKEN is not set, we return null to bypass the database lookup and error.
+  return null;
 }

@@ -76,7 +76,7 @@ export class SeatedAttendee extends BookingAttendee {
   @IsObject()
   @IsOptional()
   @Expose()
-  metadata?: Record<string, string>;
+  metadata?: Record<string, unknown>;
 }
 
 class BookingHost {
@@ -262,7 +262,7 @@ class BaseBookingOutput_2024_08_13 {
   @IsObject()
   @IsOptional()
   @Expose()
-  metadata?: Record<string, string>;
+  metadata?: Record<string, unknown>;
 
   @ApiPropertyOptional({ type: Number, example: 4 })
   @IsInt()

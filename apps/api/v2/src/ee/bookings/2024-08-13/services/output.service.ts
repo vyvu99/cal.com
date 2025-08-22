@@ -63,7 +63,7 @@ export const seatedBookingDataSchema = z
   .passthrough()
   .describe("SeatedBookingData");
 
-const seatedBookingMetadataSchema = z.object({}).catchall(z.string()).describe("SeatedBookingMetadata");
+const seatedBookingMetadataSchema = z.object({}).catchall(z.any()).describe("SeatedBookingMetadata");
 
 type DatabaseUser = { id: number; name: string | null; email: string; username: string | null };
 

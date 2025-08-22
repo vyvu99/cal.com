@@ -82,6 +82,111 @@ export type BookerLayoutSettings = z.infer<typeof bookerLayouts>;
 
 export const RequiresConfirmationThresholdUnits: z.ZodType<UnitTypeLongPlural> = z.enum(["hours", "minutes"]);
 
+const alby_zod_ts = z.any();
+const basecamp3_zod_ts = z.any();
+const btcpayserver_zod_ts = z.any();
+const closecom_zod_ts = z.any();
+const dailyvideo_zod_ts = z.any();
+const dub_zod_ts = z.any();
+const fathom_zod_ts = z.any();
+const feishucalendar_zod_ts = z.any();
+const ga4_zod_ts = z.any();
+const giphy_zod_ts = z.any();
+const googlecalendar_zod_ts = z.any();
+const googlevideo_zod_ts = z.any();
+const gtm_zod_ts = z.any();
+const hitpay_zod_ts = z.any();
+const hubspot_zod_ts = z.any();
+const insihts_zod_ts = z.any();
+const intercom_zod_ts = z.any();
+const jelly_zod_ts = z.any();
+const jitsivideo_zod_ts = z.any();
+const larkcalendar_zod_ts = z.any();
+const make_zod_ts = z.any();
+const matomo_zod_ts = z.any();
+const metapixel_zod_ts = z.any();
+const mock_payment_app_zod_ts = z.any();
+const nextcloudtalk_zod_ts = z.any();
+const office365calendar_zod_ts = z.any();
+const office365video_zod_ts = z.any();
+const paypal_zod_ts = z.any();
+const pipedrive_crm_zod_ts = z.any();
+const plausible_zod_ts = z.any();
+const posthog_zod_ts = z.any();
+const qr_code_zod_ts = z.any();
+const routing_forms_zod_ts = z.any();
+const salesforce_zod_ts = z.any();
+const shimmervideo_zod_ts = z.any();
+const stripepayment_zod_ts = z.any();
+const tandemvideo_zod_ts = z.any();
+const booking_pages_tag_zod_ts = z.any();
+const event_type_app_card_zod_ts = z.any();
+const twipla_zod_ts = z.any();
+const umami_zod_ts = z.any();
+const vital_zod_ts = z.any();
+const webex_zod_ts = z.any();
+const wordpress_zod_ts = z.any();
+const zapier_zod_ts = z.any();
+const zoho_bigin_zod_ts = z.any();
+const zohocalendar_zod_ts = z.any();
+const zohocrm_zod_ts = z.any();
+const zoomvideo_zod_ts = z.any();
+
+export const appDataSchemas = {
+  alby: alby_zod_ts,
+  basecamp3: basecamp3_zod_ts,
+  btcpayserver: btcpayserver_zod_ts,
+  closecom: closecom_zod_ts,
+  dailyvideo: dailyvideo_zod_ts,
+  dub: dub_zod_ts,
+  fathom: fathom_zod_ts,
+  feishucalendar: feishucalendar_zod_ts,
+  ga4: ga4_zod_ts,
+  giphy: giphy_zod_ts,
+  googlecalendar: googlecalendar_zod_ts,
+  googlevideo: googlevideo_zod_ts,
+  gtm: gtm_zod_ts,
+  hitpay: hitpay_zod_ts,
+  hubspot: hubspot_zod_ts,
+  insihts: insihts_zod_ts,
+  intercom: intercom_zod_ts,
+  jelly: jelly_zod_ts,
+  jitsivideo: jitsivideo_zod_ts,
+  larkcalendar: larkcalendar_zod_ts,
+  make: make_zod_ts,
+  matomo: matomo_zod_ts,
+  metapixel: metapixel_zod_ts,
+  "mock-payment-app": mock_payment_app_zod_ts,
+  nextcloudtalk: nextcloudtalk_zod_ts,
+  office365calendar: office365calendar_zod_ts,
+  office365video: office365video_zod_ts,
+  paypal: paypal_zod_ts,
+  "pipedrive-crm": pipedrive_crm_zod_ts,
+  plausible: plausible_zod_ts,
+  posthog: posthog_zod_ts,
+  qr_code: qr_code_zod_ts,
+  "routing-forms": routing_forms_zod_ts,
+  salesforce: salesforce_zod_ts,
+  shimmervideo: shimmervideo_zod_ts,
+  stripe: stripepayment_zod_ts,
+  tandemvideo: tandemvideo_zod_ts,
+  "booking-pages-tag": booking_pages_tag_zod_ts,
+  "event-type-app-card": event_type_app_card_zod_ts,
+  twipla: twipla_zod_ts,
+  umami: umami_zod_ts,
+  vital: vital_zod_ts,
+  webex: webex_zod_ts,
+  wordpress: wordpress_zod_ts,
+  zapier: zapier_zod_ts,
+  "zoho-bigin": zoho_bigin_zod_ts,
+  zohocalendar: zohocalendar_zod_ts,
+  zohocrm: zohocrm_zod_ts,
+  zoomvideo: zoomvideo_zod_ts,
+};
+
+export const EventTypeAppMetadataSchema = z.object(appDataSchemas).partial();
+export const eventTypeAppMetadataOptionalSchema = EventTypeAppMetadataSchema.optional();
+
 const _eventTypeMetaDataSchemaWithoutApps = z.object({
   smartContractAddress: z.string().optional(),
   blockchainId: z.number().optional(),
@@ -410,10 +515,8 @@ export const teamMetadataStrictSchema = baseTeamMetadataSchema
   .nullable();
 
 export const bookingMetadataSchema = z
-  .object({
-    videoCallUrl: z.string().optional(),
-  })
-  .and(z.record(z.string()))
+  .object({})
+  .catchall(z.any())
   .nullable()
   .describe("BookingMetadata");
 

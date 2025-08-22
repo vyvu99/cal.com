@@ -65,7 +65,6 @@ export class UpdateTeamDto {
   })
   @IsObject()
   @IsOptional()
-  @ValidateMetadata()
   metadata?: Metadata;
 
   @IsOptional()

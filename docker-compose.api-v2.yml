@@ -1,43 +1,44 @@
+version: '3.8'
+
 volumes:
   database-data:
   redis-data:
 
 networks:
-  stack:
-    name: stack
-    external: false
+  calcom-network:
+    driver: bridge
 
 services:
   database:
-    container_name: database
+    container_name: calcom-database
     image: postgres:latest
     restart: always
     volumes:
       - database-data:/var/lib/postgresql/data/
     env_file: .env.api-v2
-    networks:
-      - stack
     ports:
       - "5432:5432"
+    networks:
+      - calcom-network
 
   redis:
-    image: redis:7-alpine
+    container_name: calcom-redis
+    image: redis:latest
     restart: always
     command: redis-server --appendonly yes
     volumes:
       - redis-data:/data
-    networks:
-      - stack
     ports:
       - 6379:6379
+    networks:
+      - calcom-network
 
   calcom-api-v2:
+    container_name: calcom-api-v2
     build:
       context: .
       dockerfile: apps/api/v2/Dockerfile
     restart: always
-    networks:
-      - stack
     ports:
       - 80:80
     env_file: .env.api-v2
@@ -49,3 +50,5 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+    networks:
+      - calcom-network

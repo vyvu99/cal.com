@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cal.com Google Calendar Integration Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .card {
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 20px 0;
+            background: #fafafa;
+        }
+        button {
+            background-color: #374151;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #1f2937;
+        }
+        button:disabled {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 16px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+        label {
+            font-weight: 500;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #374151;
+        }
+        .status {
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .success {
+            background-color: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+        .error {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+        }
+        .info {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
+        }
+        .hidden {
+            display: none;
+        }
+        .step {
+            margin: 25px 0;
+        }
+        .step h3 {
+            margin-top: 0;
+            color: #1f2937;
+        }
+        .api-url {
+            background-color: #f3f4f6;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cal.com Google Calendar Integration Test</h1>
+        
+        <div class="card">
+            <h2>Setup Instructions</h2>
+            <p>Before testing, make sure you have:</p>
+            <ol>
+                <li>Configured Google Calendar API credentials in your Cal.com environment</li>
+                <li>Set up the redirect URI in Google Cloud Console to point to your API v2 callback endpoint</li>
+                <li>Started the Cal.com API v2 server</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>Step 1: Configure API Settings</h3>
+            <div>
+                <label for="apiUrl">API v2 Base URL:</label>
+                <input type="text" id="apiUrl" placeholder="http://localhost" value="http://localhost">
+                
+                <label for="accessToken">Access Token:</label>
+                <input type="text" id="accessToken" placeholder="Enter your API access token">
+                
+                <label for="redirectUrl">Redirect URL (after OAuth):</label>
+                <input type="text" id="redirectUrl" placeholder="http://localhost/calcom/index.html" value="http://localhost/calcom/index.html">
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Connect Google Calendar</h3>
+            <button id="connectBtn">Get Google Calendar OAuth URL</button>
+            <div id="status" class="status hidden"></div>
+            <div id="oauthUrlContainer" class="card hidden">
+                <p><strong>Google OAuth URL:</strong></p>
+                <div class="api-url" id="oauthUrl"></div>
+                <p class="info">Copy this URL and paste it in your browser to complete the OAuth flow</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>Step 3: Check Connection</h3>
+            <button id="checkBtn">Check Connection Status</button>
+            <div id="checkStatus" class="status hidden"></div>
+        </div>
+
+        <div class="step">
+            <h3>Step 4: Connect Google Meet (API v2)</h3>
+            <p>After connecting Google Calendar, you can connect Google Meet for video conferencing.</p>
+            <button id="connectMeetBtn">Connect to Google Meet</button>
+            <div id="meetStatus" class="status hidden"></div>
+        </div>
+
+        <div class="step">
+            <h3>API Endpoints Used</h3>
+            <div class="card">
+                <p><strong>Google Calendar Connect Endpoint:</strong></p>
+                <div class="api-url" id="connectEndpoint">Not configured yet</div>
+                
+                <p><strong>Google Calendar Check Endpoint:</strong></p>
+                <div class="api-url" id="checkEndpoint">Not configured yet</div>
+                
+                <p><strong>Google Calendar Callback Endpoint:</strong></p>
+                <div class="api-url" id="callbackEndpoint">Not configured yet</div>
+                
+                <p><strong>Google Meet Connect Endpoint:</strong></p>
+                <div class="api-url" id="connectMeetEndpoint">Not configured yet</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const apiUrlInput = document.getElementById('apiUrl');
+        const accessTokenInput = document.getElementById('accessToken');
+        const redirectUrlInput = document.getElementById('redirectUrl');
+        const connectBtn = document.getElementById('connectBtn');
+        const checkBtn = document.getElementById('checkBtn');
+        const connectMeetBtn = document.getElementById('connectMeetBtn');
+        const statusDiv = document.getElementById('status');
+        const checkStatusDiv = document.getElementById('checkStatus');
+        const meetStatusDiv = document.getElementById('meetStatus');
+        const connectEndpointDiv = document.getElementById('connectEndpoint');
+        const checkEndpointDiv = document.getElementById('checkEndpoint');
+        const callbackEndpointDiv = document.getElementById('callbackEndpoint');
+        const connectMeetEndpointDiv = document.getElementById('connectMeetEndpoint');
+
+        // Update endpoint URLs when API URL changes
+        function updateEndpoints() {
+            const apiUrl = apiUrlInput.value.trim();
+            if (apiUrl) {
+                connectEndpointDiv.textContent = `${apiUrl}/v2/calendars/google/connect`;
+                checkEndpointDiv.textContent = `${apiUrl}/v2/calendars/google/check`;
+                callbackEndpointDiv.textContent = `${apiUrl}/v2/calendars/google/save`;
+                connectMeetEndpointDiv.textContent = `${apiUrl}/v2/conferencing/google-meet/connect`;
+            }
+        }
+
+        // Initialize
+        updateEndpoints();
+        apiUrlInput.addEventListener('input', updateEndpoints);
+
+        // Show status message
+        function showStatus(message, type = 'info') {
+            statusDiv.textContent = message;
+            statusDiv.className = `status ${type}`;
+            statusDiv.classList.remove('hidden');
+        }
+
+        // Show check status message
+        function showCheckStatus(message, type = 'info') {
+            checkStatusDiv.textContent = message;
+            checkStatusDiv.className = `status ${type}`;
+            checkStatusDiv.classList.remove('hidden');
+        }
+
+        // Show Google Meet status message
+        function showMeetStatus(message, type = 'info') {
+            meetStatusDiv.textContent = message;
+            meetStatusDiv.className = `status ${type}`;
+            meetStatusDiv.classList.remove('hidden');
+        }
+
+        // Show OAuth URL
+        function showOAuthUrl(url) {
+            document.getElementById('oauthUrl').textContent = url;
+            document.getElementById('oauthUrlContainer').classList.remove('hidden');
+        }
+
+        // Connect to Google Calendar
+        connectBtn.addEventListener('click', async () => {
+            const apiUrl = apiUrlInput.value.trim();
+            const accessToken = accessTokenInput.value.trim();
+            const redirectUrl = redirectUrlInput.value.trim();
+
+            if (!apiUrl) {
+                showStatus('Please enter the API URL', 'error');
+                return;
+            }
+
+            if (!accessToken) {
+                showStatus('Please enter your access token', 'error');
+                return;
+            }
+
+            try {
+                showStatus('Getting Google Calendar OAuth URL...', 'info');
+                connectBtn.disabled = true;
+
+                // Call the connect endpoint
+                const response = await fetch(`${apiUrl}/v2/calendars/google/connect`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                if (data.status === 'success' && data.data && data.data.authUrl) {
+                    showStatus('Google OAuth URL generated successfully!', 'success');
+                    showOAuthUrl(data.data.authUrl);
+                    connectBtn.disabled = false;
+                } else {
+                    throw new Error('Failed to get OAuth URL');
+                }
+            } catch (error) {
+                console.error('Error connecting to Google Calendar:', error);
+                showStatus(`Error: ${error.message}`, 'error');
+                connectBtn.disabled = false;
+            }
+        });
+
+        // Check connection status
+        checkBtn.addEventListener('click', async () => {
+            const apiUrl = apiUrlInput.value.trim();
+            const accessToken = accessTokenInput.value.trim();
+
+            if (!apiUrl) {
+                showCheckStatus('Please enter the API URL', 'error');
+                return;
+            }
+
+            if (!accessToken) {
+                showCheckStatus('Please enter your access token', 'error');
+                return;
+            }
+
+            try {
+                showCheckStatus('Checking connection status...', 'info');
+
+                // Call the check endpoint
+                const response = await fetch(`${apiUrl}/v2/calendars/google/check`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    showCheckStatus('Google Calendar is successfully connected!', 'success');
+                } else {
+                    throw new Error('Failed to check connection');
+                }
+            } catch (error) {
+                console.error('Error checking connection:', error);
+                showCheckStatus(`Error: ${error.message}`, 'error');
+            }
+        });
+
+        // Handle OAuth callback
+        function handleOAuthCallback() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            const error = urlParams.get('error');
+            
+            if (code) {
+                showStatus('Google Calendar connected successfully! You can now check the connection status and connect Google Meet.', 'success');
+                // Clear URL parameters
+                window.history.replaceState({}, document.title, window.location.pathname);
+            } else if (error) {
+                showStatus(`OAuth error: ${error}`, 'error');
+            }
+        }
+
+        // Connect to Google Meet
+        connectMeetBtn.addEventListener('click', async () => {
+            const apiUrl = apiUrlInput.value.trim();
+            const accessToken = accessTokenInput.value.trim();
+
+            if (!apiUrl) {
+                showMeetStatus('Please enter the API URL', 'error');
+                return;
+            }
+
+            if (!accessToken) {
+                showMeetStatus('Please enter your access token', 'error');
+                return;
+            }
+
+            try {
+                showMeetStatus('Connecting to Google Meet...', 'info');
+
+                // Call the Google Meet connect endpoint
+                const response = await fetch(`${apiUrl}/v2/conferencing/google-meet/connect`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    if(errorData.error.message.includes('already connected')) {
+                        showMeetStatus('Google Meet is already connected!', 'success');
+                        return;
+                    }
+                    throw new Error(errorData.error.message || `HTTP error! status: ${response.error.status}`);
+                }
+
+                const data = await response.json();
+                
+                
+                if (data.status === 'success') {
+                    showMeetStatus('Google Meet connected successfully!', 'success');
+                } else {
+                    throw new Error('Failed to connect Google Meet');
+                }
+            } catch (error) {
+                console.error('Error connecting to Google Meet:', error);
+                showMeetStatus(`Error: ${error.message}`, 'error');
+            }
+        });
+
+        // Check if we're returning from OAuth
+        handleOAuthCallback();
+    </script>
+</body>
+</html>

@@ -181,4 +181,18 @@ export class BookingsRepository_2024_08_13 {
       },
     });
   }
+
+  async update(uid: string, data: Prisma.BookingUpdateInput) {
+    return this.dbWrite.prisma.booking.update({
+      where: {
+        uid,
+      },
+      data,
+      include: {
+        attendees: true,
+        user: true,
+        eventType: true,
+      },
+    });
+  }
 }

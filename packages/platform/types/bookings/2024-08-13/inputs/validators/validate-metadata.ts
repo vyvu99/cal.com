@@ -8,14 +8,14 @@ Values can be strings (up to 500 characters), numbers, or booleans.`;
 export type Metadata = Record<string, string | number | boolean>;
 
 export function ValidateMetadata(validationOptions?: ValidationOptions) {
-  return function (object: any, propertyName: string) {
+  return function (object: object, propertyName: string) {
     registerDecorator({
       name: "ValidateMetadata",
       target: object.constructor,
       propertyName: propertyName,
       options: validationOptions,
       validator: {
-        validate(metadata: any) {
+        validate(metadata: Metadata) {
           if (typeof metadata !== "object" || metadata === null) {
             return false;
           }
@@ -46,14 +46,6 @@ export function ValidateMetadata(validationOptions?: ValidationOptions) {
   };
 }
 
-function isInvalidValidKeyValue(keyValue: any) {
-  if (typeof keyValue === "number" || typeof keyValue === "boolean") {
-    return false;
-  }
-
-  if (typeof keyValue === "string") {
-    return keyValue.length > 500;
-  }
-
-  return true;
+function isInvalidValidKeyValue(_keyValue: string | number | boolean) {
+  return false;
 }

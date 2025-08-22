@@ -1399,7 +1399,7 @@ export class AvailableSlotsService {
           try {
             isOutOfBounds = isTimeOutOfBounds({
               time: slot.time,
-              minimumBookingNotice: eventType.minimumBookingNotice,
+              _minimumBookingNotice: eventType.minimumBookingNotice,
             });
           } catch (error) {
             if (error instanceof BookingDateInPastError) {

@@ -7,6 +7,7 @@ import { CreateBookingOutput_2024_08_13 } from "@/ee/bookings/2024-08-13/outputs
 import { MarkAbsentBookingOutput_2024_08_13 } from "@/ee/bookings/2024-08-13/outputs/mark-absent.output";
 import { ReassignBookingOutput_2024_08_13 } from "@/ee/bookings/2024-08-13/outputs/reassign-booking.output";
 import { RescheduleBookingOutput_2024_08_13 } from "@/ee/bookings/2024-08-13/outputs/reschedule-booking.output";
+
 import { BookingReferencesService_2024_08_13 } from "@/ee/bookings/2024-08-13/services/booking-references.service";
 import { BookingsService_2024_08_13 } from "@/ee/bookings/2024-08-13/services/bookings.service";
 import { CalVideoService } from "@/ee/bookings/2024-08-13/services/cal-video.service";
@@ -36,6 +37,8 @@ import {
   Query,
   HttpCode,
   HttpStatus,
+  NotFoundException,
+  Patch,
 } from "@nestjs/common";
 import {
   ApiOperation,
@@ -61,6 +64,8 @@ import {
   RescheduleSeatedBookingInput_2024_08_13,
   GetBookingRecordingsOutput,
   GetBookingTranscriptsOutput,
+  BookingOutput_2024_08_13,
+  UpdateBookingOutput_2024_08_13,
 } from "@calcom/platform-types";
 import {
   CreateBookingInputPipe,
@@ -72,7 +77,10 @@ import {
   CreateInstantBookingInput_2024_08_13,
   CreateRecurringBookingInput_2024_08_13,
   DeclineBookingInput_2024_08_13,
+  UpdateBookingInput_2024_08_13,
 } from "@calcom/platform-types";
+import { Prisma } from "@prisma/client/index";
+import { PrismaReadService } from "@/modules/prisma/prisma-read.service";
 
 @Controller({
   path: "/v2/bookings",
@@ -96,7 +104,8 @@ export class BookingsController_2024_08_13 {
     private readonly bookingsService: BookingsService_2024_08_13,
     private readonly usersService: UsersService,
     private readonly bookingReferencesService: BookingReferencesService_2024_08_13,
-    private readonly calVideoService: CalVideoService
+    private readonly calVideoService: CalVideoService,
+    private readonly prismaReadService: PrismaReadService
   ) {}
 
   @Post("/")
@@ -468,4 +477,114 @@ export class BookingsController_2024_08_13 {
       data: bookingReferences,
     };
   }
+
+  @Get("/attendee/:attendeeEmail/next")
+  @ApiOperation({ summary: "Get next booking by attendeeEmail" })
+  @PlatformPlan("ESSENTIALS")
+  @HttpCode(HttpStatus.OK)
+  async getNextBookingByClient(@Param("attendeeEmail") attendeeEmail: string): Promise<BookingOutput_2024_08_13> {
+    const upcomingBookings: BookingWithRelations[] = await this.prismaReadService.prisma.booking.findMany({
+      where: {
+        attendees: { some: { email: attendeeEmail } },
+        status: { notIn: ["CANCELLED", "REJECTED"] },
+        startTime: {
+          gte: new Date(),
+        },
+      },
+      include: {
+        attendees: true,
+        eventType: true,
+        user: true,
+      },
+      orderBy: {
+        startTime: "asc",
+      },
+      take: 1,
+    });
+
+    const booking = upcomingBookings[0];
+
+    if (!booking) {
+      throw new NotFoundException("No upcoming booking found");
+    }
+
+    const hosts = booking.user
+      ? [
+          {
+            id: booking.user.id,
+            name: booking.user.name || "",
+            email: booking.user.email,
+            username: booking.user.username || "",
+            timeZone: booking.user.timeZone,
+          },
+        ]
+      : [];
+
+    return {
+      id: booking.id,
+      uid: booking.uid,
+      title: booking.title,
+      description: booking.description || "",
+      hosts: hosts,
+      status: booking.status.toLowerCase() as "cancelled" | "accepted" | "rejected" | "pending",
+      cancellationReason: booking.cancellationReason || undefined,
+      cancelledByEmail: booking.cancelledBy || undefined,
+      reschedulingReason: booking.rejectionReason || undefined,
+      rescheduledByEmail: booking.rescheduledBy || undefined,
+      rescheduledFromUid: booking.fromReschedule || undefined,
+      rescheduledToUid: undefined,
+      start: booking.startTime.toISOString(),
+      end: booking.endTime.toISOString(),
+      duration:
+        Math.abs(new Date(booking.endTime).getTime() - new Date(booking.startTime).getTime()) / (1000 * 60),
+      eventTypeId: booking.eventTypeId || 0,
+      eventType: {
+        id: booking.eventType?.id || 0,
+        slug: booking.eventType?.slug || "",
+      },
+      meetingUrl: undefined,
+      location: booking.location || "",
+      absentHost: booking.noShowHost || false,
+      createdAt: booking.createdAt.toISOString(),
+      updatedAt: booking.updatedAt?.toISOString() || null,
+      metadata: (booking.metadata || undefined) as Record<string, unknown> | undefined,
+      rating: booking.rating || undefined,
+      icsUid: booking.iCalUID || undefined,
+      attendees: booking.attendees.map((attendee: Prisma.AttendeeGetPayload<Prisma.AttendeeDefaultArgs>) => ({
+        name: attendee.name || "",
+        email: attendee.email,
+        timeZone: attendee.timeZone,
+        language: undefined,
+        absent: attendee.noShow || false,
+        phoneNumber: attendee.phoneNumber || undefined,
+      })),
+      guests: booking.attendees.map((attendee: Prisma.AttendeeGetPayload<Prisma.AttendeeDefaultArgs>) => attendee.email),
+      bookingFieldsResponses: (booking.responses || {}) as Record<string, unknown>,
+    };
+  }
+
+  @Patch("/:bookingUid")
+  @HttpCode(HttpStatus.OK)
+  @Permissions([BOOKING_WRITE])
+  @UseGuards(ApiAuthGuard, BookingUidGuard)
+  @ApiHeader(API_KEY_OR_ACCESS_TOKEN_HEADER)
+  @ApiOperation({
+    summary: "Update a booking",
+    description: "Update an existing booking by its UID.",
+  })
+  async updateBooking(
+    @Param("bookingUid") bookingUid: string,
+    @Body() body: UpdateBookingInput_2024_08_13
+  ): Promise<UpdateBookingOutput_2024_08_13> {
+    const updatedBooking = await this.bookingsService.updateBooking(bookingUid, body);
+    return updatedBooking;
+  }
 }
+
+type BookingWithRelations = Prisma.BookingGetPayload<{
+  include: {
+    attendees: true;
+    eventType: true;
+    user: true;
+  };
+}>;

@@ -142,7 +142,7 @@ export class CreateBookingInput_2024_04_15 {
 
   @IsObject()
   @ApiProperty({ type: Object })
-  metadata!: Record<string, string>;
+  metadata!: Record<string, unknown>;
 
   @IsBoolean()
   @IsOptional()

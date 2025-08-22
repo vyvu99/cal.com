@@ -69,7 +69,7 @@ export const isAvailableHandler = async ({
     // Check time bounds
     const timeStatus = getPastTimeAndMinimumBookingNoticeBoundsStatus({
       time: slot.utcStartIso,
-      minimumBookingNotice: eventType.minimumBookingNotice,
+            _minimumBookingNotice: eventType.minimumBookingNotice,
     });
 
     return {

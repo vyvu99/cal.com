@@ -20,6 +20,7 @@ import { ApiHeader, ApiOperation, ApiTags as DocsTags } from "@nestjs/swagger";
 
 import { SUCCESS_STATUS } from "@calcom/platform-constants";
 import { GetBookingsOutput_2024_08_13, GetOrganizationsBookingsInput } from "@calcom/platform-types";
+import { CountBookingsOutput } from "./outputs/count-bookings.output";
 
 @Controller({
   path: "/v2/organizations/:orgId/bookings",
@@ -55,6 +56,29 @@ export class OrganizationsBookingsController {
       status: SUCCESS_STATUS,
       data: bookings,
       pagination,
+    };
+  }
+
+  @Get("/count")
+  @ApiOperation({ summary: "Count organization bookings" })
+  @Roles("ORG_ADMIN")
+  @PlatformPlan("ESSENTIALS")
+  @HttpCode(HttpStatus.OK)
+  async countOrgBookings(
+    @Query() queryParams: GetOrganizationsBookingsInput,
+    @Param("orgId", ParseIntPipe) orgId: number,
+    @GetUser() user: UserWithProfile
+  ): Promise<CountBookingsOutput> {
+    const { userIds, ...restParams } = queryParams;
+
+    const { count } = await this.bookingsService.countBookings(
+      { ...restParams },
+      { email: user.email, id: user.id, orgId },
+      userIds
+    );
+
+    return {
+      count,
     };
   }
 }

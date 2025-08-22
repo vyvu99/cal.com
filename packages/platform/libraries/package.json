@@ -18,7 +18,8 @@
   },
   "dependencies": {
     "@calcom/features": "*",
-    "@calcom/lib": "*"
+    "@calcom/lib": "*",
+    "@calcom/prisma": "*"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",

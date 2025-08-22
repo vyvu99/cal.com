@@ -61,9 +61,11 @@ import {
   GetRecurringSeatedBookingOutput_2024_08_13,
   RescheduleBookingInput,
   CancelBookingInput,
+  UpdateBookingInput_2024_08_13,
+  UpdateBookingOutput_2024_08_13,
 } from "@calcom/platform-types";
 import type { PrismaClient } from "@calcom/prisma";
-import type { EventType, User, Team } from "@calcom/prisma/client";
+import type { EventType, User, Team, Prisma } from "@calcom/prisma/client";
 
 type CreatedBooking = {
   hosts: { id: number }[];
@@ -689,6 +691,34 @@ export class BookingsService_2024_08_13 {
     };
   }
 
+  async countBookings(
+    queryParams: GetBookingsInput_2024_08_13,
+    user: { email: string; id: number; orgId?: number },
+    userIds?: number[]
+  ) {
+    if (queryParams.attendeeEmail) {
+      queryParams.attendeeEmail = await this.getAttendeeEmail(queryParams.attendeeEmail, user);
+    }
+
+    const fetchedBookings: { bookings: { id: number }[]; totalCount: number } = await getAllUserBookings({
+      bookingListingByStatus: queryParams.status || [],
+      skip: 0, // We only need the count, so no need to skip or take
+      take: 0, // We only need the count, so no need to skip or take
+      filters: {
+        ...this.inputService.transformGetBookingsFilters(queryParams),
+        ...(userIds?.length ? { userIds } : {}),
+      },
+      ctx: {
+        user,
+        prisma: this.prismaReadService.prisma as unknown as PrismaClient,
+        kysely: this.kyselyReadService.kysely,
+      },
+      sort: this.inputService.transformGetBookingsSort(queryParams),
+    });
+
+    return { count: fetchedBookings.totalCount };
+  }
+
   async getAttendeeEmail(queryParamsAttendeeEmail: string, user: { id: number }) {
     // note(Lauris): this is to handle attendees that are managed users - in attendee table their email is one of managed users e.g
     // urdasdqinm+clxyyy21o0003sbk7yw5z6tzg@example.com but if attendeeEmail is passed as urdasdqinm@example.com then we check if user whose
@@ -1096,5 +1126,57 @@ export class BookingsService_2024_08_13 {
       // It can be made customizable through the API endpoint later.
       t: await getTranslation("en", "common"),
     });
+  }
+
+  async updateBooking(bookingUid: string, body: UpdateBookingInput_2024_08_13): Promise<UpdateBookingOutput_2024_08_13> {
+    const existingBooking = await this.bookingsRepository.getByUidWithAttendeesAndUserAndEvent(bookingUid);
+
+    if (!existingBooking) {
+      throw new NotFoundException(`Booking with uid ${bookingUid} not found`);
+    }
+
+    const updatedData: Prisma.BookingUpdateInput = {};
+
+    if (body.title !== undefined) {
+      updatedData.title = body.title;
+    }
+    if (body.description !== undefined) {
+      updatedData.description = body.description;
+    }
+    if (body.startTime !== undefined) {
+      updatedData.startTime = body.startTime;
+    }
+    if (body.endTime !== undefined) {
+      updatedData.endTime = body.endTime;
+    }
+    if (body.location !== undefined) {
+      updatedData.location = body.location;
+    }
+    if (body.metadata !== undefined) {
+      updatedData.metadata = body.metadata as Prisma.InputJsonValue;
+    }
+    if (body.bookingFieldsResponses !== undefined) {
+      updatedData.responses = body.bookingFieldsResponses as Prisma.InputJsonValue;
+    }
+
+    if (body.attendees !== undefined) {
+      // Assuming attendees are updated by replacing the entire list for simplicity.
+      // A more robust solution might involve diffing and updating individual attendees.
+      updatedData.attendees = {
+        deleteMany: {}, // Delete existing attendees
+        createMany: {
+          data: body.attendees.map(attendee => ({
+            name: attendee.name,
+            email: attendee.email,
+            timeZone: attendee.timeZone,
+            phoneNumber: attendee.phoneNumber,
+          })),
+        },
+      };
+    }
+
+    const updatedBooking = await this.bookingsRepository.update(bookingUid, updatedData);
+
+    return this.outputService.getOutputBooking(updatedBooking);
   }
 }
