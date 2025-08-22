@@ -9,7 +9,7 @@ networks:
 
 services:
   database:
-    container_name: database
+    container_name: calcom-database
     image: postgres:latest
     restart: always
     volumes:
@@ -21,7 +21,8 @@ services:
       - "5432:5432"
 
   redis:
-    image: redis:7-alpine
+    container_name: calcom-redis
+    image: redis:latest
     restart: always
     command: redis-server --appendonly yes
     volumes:
@@ -32,6 +33,7 @@ services:
       - 6379:6379
 
   calcom-api-v2:
+    container_name: calcom-api-v2
     build:
       context: .
       dockerfile: apps/api/v2/Dockerfile

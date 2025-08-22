@@ -1,7 +1,7 @@
 import { UserCreateInput } from "@/modules/users/inputs/user-create.input";
 import { UserSignupResponse, UserSignupErrorResponse } from "@/modules/users/outputs/user-signup.output";
 import { UsersService } from "@/modules/users/services/users.service";
-import { Body, Controller, Post, HttpCode, HttpStatus } from "@nestjs/common";
+import { Body, Controller, Post, HttpCode, HttpStatus, Logger } from "@nestjs/common";
 import { ApiTags as DocsTags, ApiOperation, ApiResponse } from "@nestjs/swagger";
 
 @Controller("users")
@@ -61,6 +61,8 @@ export class UsersController {
           message: error.message,
         };
       }
+
+      Logger.error(error);
 
       // Handle other errors
       return {

@@ -6,7 +6,7 @@ import * as bcrypt from "bcrypt";
 import { randomBytes, createHash } from "crypto";
 import { v4 } from "uuid";
 
-import { User } from "@calcom/prisma/client";
+import { IdentityProvider, User } from "@calcom/prisma/client";
 
 // Hash the API key to check against when verifying it. so we don't have to store the key in plain text.
 const hashAPIKey = (apiKey: string): string => createHash("sha256").update(apiKey).digest("hex");
@@ -71,7 +71,7 @@ export class UsersService {
     });
 
     if (existingUser) {
-      throw new Error("User with this email already exists");
+      return existingUser;
     }
 
     // Check if username is taken (using findFirst since there's no unique constraint just on username)
@@ -92,8 +92,7 @@ export class UsersService {
         username: username.toLowerCase(),
         email: email.toLowerCase(),
         password: { create: { hash: hashedPassword } },
-        identityProvider: "CAL", // Use string literal instead of enum
-        // Skip email verification
+        identityProvider: IdentityProvider.CAL,
         emailVerified: new Date(Date.now()),
         metadata: {
           // Add any additional metadata for premium users
@@ -115,6 +114,13 @@ export class UsersService {
 
     // Get the API key prefix from environment variables or use default
     const apiKeyPrefix = process.env.API_KEY_PREFIX ?? "cal_";
+
+    // Delete apiKeys
+    await this.dbWrite.prisma.apiKey.deleteMany({
+      where: {
+        userId: userId,
+      },
+    });
 
     // Create the API key in the database
     await this.dbWrite.prisma.apiKey.create({
