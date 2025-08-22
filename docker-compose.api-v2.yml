@@ -1,0 +1,51 @@
+volumes:
+  database-data:
+  redis-data:
+
+networks:
+  stack:
+    name: stack
+    external: false
+
+services:
+  database:
+    container_name: database
+    image: postgres:latest
+    restart: always
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+    env_file: .env.api-v2
+    networks:
+      - stack
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    restart: always
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    networks:
+      - stack
+    ports:
+      - 6379:6379
+
+  calcom-api-v2:
+    build:
+      context: .
+      dockerfile: apps/api/v2/Dockerfile
+    restart: always
+    networks:
+      - stack
+    ports:
+      - 80:80
+    env_file: .env.api-v2
+    depends_on:
+      - database
+      - redis
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

@@ -13801,6 +13801,56 @@
         ]
       }
     },
+    "/users/signup": {
+      "post": {
+        "operationId": "UsersController_signup",
+        "summary": "Create a new user account",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserCreateInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User account created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSignupResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Username or email already taken",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSignupErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSignupErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Users"]
+      }
+    },
     "/v2/verified-resources/emails/verification-code/request": {
       "post": {
         "operationId": "UserVerifiedResourcesController_requestEmailVerificationCode",
@@ -15221,6 +15271,94 @@
           "status",
           "data"
         ]
+      },
+      "UserCreateInput": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "The username for the new user account",
+            "example": "johndoe"
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address for the new user account",
+            "example": "john@example.com"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 8,
+            "description": "The password for the new user account",
+            "example": "securePassword123"
+          }
+        },
+        "required": ["username", "email", "password"]
+      },
+      "UserSignupData": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "The unique identifier of the user",
+            "example": 1
+          },
+          "username": {
+            "type": "string",
+            "description": "The username of the user",
+            "example": "johndoe"
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the user",
+            "example": "john@example.com"
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "The API key generated for the user",
+            "example": "cal_1234567890abcdef1234567890abcdef"
+          }
+        },
+        "required": ["id", "username", "email", "apiKey"]
+      },
+      "UserSignupResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number",
+            "description": "HTTP status code",
+            "example": 201
+          },
+          "message": {
+            "type": "string",
+            "description": "Message describing the result of the operation",
+            "example": "User account created successfully"
+          },
+          "data": {
+            "description": "Data returned from the operation",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UserSignupData"
+              }
+            ]
+          }
+        },
+        "required": ["status", "message", "data"]
+      },
+      "UserSignupErrorResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number",
+            "description": "HTTP status code",
+            "example": 409
+          },
+          "message": {
+            "type": "string",
+            "description": "Message describing the error",
+            "example": "User with this email already exists"
+          }
+        },
+        "required": ["status", "message"]
       },
       "BookerLayouts_2024_06_14": {
         "type": "object",
